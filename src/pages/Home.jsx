@@ -21,11 +21,12 @@ function Home() {
           <span className="letter-orange">p</span>
           <span className="letter-blue">e</span>
         </h1>
-
-        <button className="btn-iniciar">
-          INICIAR
+        <a href="/Tela-Caranguejo.jsx">
+          <button className="btn-iniciar">
+          INICIAR 
         </button>
-
+        </a>
+       
       </div>
     </div>
   );
