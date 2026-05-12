@@ -1,0 +1,92 @@
+/* Reset básico para evitar quebras */
+.navbar {
+  width: 100%;
+  height: 70px;
+  background-color: #0a3a6b;
+  color: white;
+  position: fixed; /* Mantém a barra no topo ao rolar */
+  top: 0 ;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px #0a3a6b;
+}
+
+.nav-container {
+  max-width: 100%; /* Limita a largura em telas grandes */
+  margin: 0 auto;    /* Centraliza o conteúdo */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 60px;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.profile-circle {
+  width: 38px;
+  height: 38px;
+  background-color: #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #974e13; /* Cor de destaque (ouro/Sergipe) */
+}
+
+.nav-right {
+  gap: 15px;
+}
+
+.player-name {
+  font-weight: 100;
+  font-size: 1rem;
+  max-width: 120px; /* Evita que nomes gigantes empurrem os ícones */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Coloca "..." se o nome for longo */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.icon-btn:hover {
+  color: #ffcc00;
+  transform: scale(1.1);
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0px 10px;
+  }
+
+  .player-name {
+    font-size: 0.9rem;
+    max-width: 80px; /* Espaço menor para o nome no celular */
+  }
+
+  .nav-icons {
+    gap: 10px;
+  }
+
+  .profile-circle {
+    width: 34px;
+    height: 34px;
+  }
+}
