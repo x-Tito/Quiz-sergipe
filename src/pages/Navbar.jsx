@@ -1,27 +1,25 @@
-import { User, Music, Settings } from 'lucide-react';
+import { Music, Music2 } from 'lucide-react';
 import './Navbar.css';
+import ProfileImg from "../Imagens/profile.jpeg";
 
-function Navbar({ playerName }) {
+function Navbar({ playerName, isMuted, toggleMusic }) {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        {/* Lado Esquerdo: Perfil */}
         <div className="nav-left">
           <div className="profile-circle">
-            <User size={20} className="icon-user" />
+            <img src={ProfileImg} alt="Perfil" className="profile-img" />
           </div>
         </div>
 
-        {/* Lado Direito: Nome e Ações */}
         <div className="nav-right">
           <span className="player-name">{playerName || "Jailson"}</span>
-          
           <div className="nav-icons">
-            <button className="icon-btn" title="Música">
-              <Music size={22} />
-            </button>
-            <button className="icon-btn" title="Configurações">
-              <Settings size={22} />
+            <button 
+              className={`icon-btn ${!isMuted ? 'playing' : ''}`} 
+              onClick={toggleMusic}
+            >
+              {isMuted ? <Music2 size={22} /> : <Music size={22} color="#2ecc71" />}
             </button>
           </div>
         </div>

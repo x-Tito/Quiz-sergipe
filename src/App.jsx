@@ -1,23 +1,34 @@
+import { useState, useRef } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./pages/Navbar"; // Mudando de components para pages
+
+// Importação dos seus componentes e páginas
+import Navbar from "./pages/Navbar"; 
 import Home from "./pages/Home";
 import Fases from "./pages/Fases";
 import TelaCaranguejo from "./pages/Tela-Caranguejo";
+import ModalNome from "./pages/ModalNome";
 
-// Criamos esse componente para a lógica funcionar
-function MainContent() {
+// Áudio (ajustado para o nome do seu arquivo no VS Code)
+import temaJogo from './assets/Audio/tema-jogo.mp3.mp3'; 
+
+function MainContent({ isMuted, toggleMusic, playerName }) {
   const location = useLocation();
-  
-  // A Navbar só renderiza se o caminho for exatamente "/"
   const mostrarNavbar = location.pathname === "/";
 
   return (
     <>
-      {mostrarNavbar && <Navbar />}
+      {/* Passamos o nome do jogador para a Navbar exibir no topo */}
+      {mostrarNavbar && (
+        <Navbar 
+          playerName={playerName} 
+          isMuted={isMuted} 
+          toggleMusic={toggleMusic} 
+        />
+      )}
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Fases" element={<Fases />} />
+        <Route path="/fases" element={<Fases />} />
         <Route path="/caranguejo" element={<TelaCaranguejo />} />
       </Routes>
     </>
@@ -25,9 +36,42 @@ function MainContent() {
 }
 
 function App() {
+  const [isMuted, setIsMuted] = useState(true);
+  const [playerName, setPlayerName] = useState("Jogador");
+  
+  // Definimos como TRUE para o modal aparecer sempre no início
+  const [mostrarModal, setMostrarModal] = useState(true); 
+  
+  const audioRef = useRef(new Audio(temaJogo));
+
+  // Função chamada quando o usuário clica em "Começar Desafio" no Modal
+  const handleConfirmarNome = (nome) => {
+    setPlayerName(nome);
+    setMostrarModal(false); // Fecha o modal
+  };
+
+  const toggleMusic = () => {
+    const audio = audioRef.current;
+    audio.loop = true;
+    if (isMuted) {
+      audio.play().catch(e => console.log("Erro áudio:", e));
+      setIsMuted(false);
+    } else {
+      audio.pause();
+      setIsMuted(true);
+    }
+  };
+
   return (
     <BrowserRouter>
-      <MainContent />
+      {/* O Modal precisa estar aqui para ser renderizado */}
+      {mostrarModal && <ModalNome aoConfirmar={handleConfirmarNome} />}
+      
+      <MainContent 
+        isMuted={isMuted} 
+        toggleMusic={toggleMusic} 
+        playerName={playerName} 
+      />
     </BrowserRouter>
   );
 }
