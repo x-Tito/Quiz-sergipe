@@ -1,96 +1,29 @@
-.Tela-Caranguejo {
-  /* Faz a div ocupar 100% da largura e altura da janela do navegador */
+/* O PAI: Controla o fundo e centraliza o card */
+.caranguejo-page {
   width: 100%;
   height: 100dvh;
-
-  /* Configuração da Imagem de Fundo */
-  background-image: url('../Imagens/Fundo-Caranguejo.png');
-  background-size: cover;      /* Cobre tudo sem distorcer */
-  background-position: center; /* Mantém o centro da imagem visível */
+  background-image: url('../Imagens/FundoCaranguejo.jpeg');
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+  
+  /* Isso aqui é o que faz "flutuar" no meio da tela */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+} /* <-- ESSA CHAVE FECHA O PAI E É ESSENCIAL */
 
-/* Container Principal do Quiz */
+/* O FILHO: O retângulo do quiz */
 .quiz-container {
-    width: 90%;
-    max-width: 700px;
-    background: rgba(255, 255, 255, 0.85); /* Branco translúcido para ler melhor */
-    padding: 30px;
-    border-radius: 15px;
-    border: 3px solid #8b4513; /* Borda cor de madeira/terra */
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    text-align: center;
+  width: 90%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 25px;
+  border: 4px solid #8b4513;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  text-align: center;
 }
 
-/* Campo da Pergunta */
-.pergunta-box {
-    background-color: #fdf5e6; /* Bege claro (Old Lace) */
-    border: 2px solid #cd853f;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 25px;
-    font-size: 1.25rem;
-    color: #5d2e0a;
-    font-weight: bold;
-}
-
-/* Grade de Alternativas */
-.alternativas-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas */
-    gap: 15px;
-}
-
-.opcao {
-    background: #fff;
-    border: 2px solid #deb887;
-    padding: 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-.opcao:hover {
-    background: #ffe4b5;
-    border-color: #8b4513;
-    transform: translateY(-2px);
-}
-
-/* Botões de Ação */
-.footer-buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.btn-home {
-    background: #777;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-enviar {
-    background: #d2691e; /* Cor terracota */
-    color: white;
-    border: none;
-    padding: 12px 40px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.btn-enviar:hover { background: #a0522d; }
-
-/* Ajuste para Celulares (Responsivo) */
-@media (max-width: 600px) {
-    .alternativas-grid {
-        grid-template-columns: 1fr; /* Uma coluna no celular */
-    }
-    .quiz-container { padding: 15px; }
-    .pergunta-box { font-size: 1rem; }
-}
-}
-
+/* O resto do seu estilo (pergunta-box, alternativas-grid, etc) vem aqui abaixo */

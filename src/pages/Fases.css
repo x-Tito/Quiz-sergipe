@@ -1,0 +1,109 @@
+/* Reset básico para garantir que nada escape */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-fases {
+  /* Ocupa 100% da tela de forma fixa */
+  width: 100vw;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Mesma imagem da Home - Ajuste o nome do arquivo se necessário */
+  background-image: url('../Imagens/tela-home.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  z-index: 1;
+}
+
+.overlay-fases {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Efeito fumê para destacar o card */
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.voltar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 22px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+.voltar:hover {
+  background-color: #187bcd;
+  transform: scale(1.05);
+}
+
+.card-fases {
+  width: 90%;
+  max-width: 420px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.15); /* Glassmorphism */
+  backdrop-filter: blur(12px); /* Efeito de vidro embaçado */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.card-fases h1 {
+  font-size: 2rem;
+  margin-bottom: 35px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.botoes-fases {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.btn-nivel {
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-nivel:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}
+
+.facil { background-color: #2ecc71; color: white; }
+.medio { background-color: #f39c12; color: white; }
+.dificil { background-color: #e74c3c; color: white; }
+
+/* Ajustes para telas bem pequenas */
+@media (max-width: 480px) {
+  .card-fases {
+    padding: 25px;
+  }
+  .card-fases h1 {
+    font-size: 1.5rem;
+  }
+}
