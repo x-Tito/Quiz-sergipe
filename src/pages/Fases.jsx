@@ -7,34 +7,30 @@ function Fases() {
 
   return (
     <div className="container-fases">
-      <div className="overlay-fases">
+      {/* Botão de Voltar posicionado no canto superior esquerdo */}
+      <button className="btn-voltar-topo" onClick={() => navigate("/")}>
+        ← Voltar
+      </button>
+
+      <div className="card-fases">
+        <h1>Escolha o Nível</h1>
         
-        {/* Botão para voltar à Home */}
-        <button className="voltar" onClick={() => navigate("/")}>
-          ← Voltar
-        </button>
-
-        <div className="card-fases">
-          <h1>Escolha o Nível</h1>
+        <div className="botoes-fases">
+          <button 
+            className="btn-nivel facil" 
+            onClick={() => navigate("/caranguejo")}
+          >
+            Fácil
+          </button>
           
-          <div className="botoes-fases">
-            <button 
-              className="btn-nivel facil" 
-              onClick={() => navigate("/caranguejo")}
-            >
-              Fácil
-            </button>
-            
-            <button className="btn-nivel medio">
-              Médio
-            </button>
-            
-            <button className="btn-nivel dificil">
-              Difícil
-            </button>
-          </div>
+          <button className="btn-nivel medio">
+            Médio
+          </button>
+          
+          <button className="btn-nivel dificil">
+            Difícil
+          </button>
         </div>
-
       </div>
     </div>
   );
