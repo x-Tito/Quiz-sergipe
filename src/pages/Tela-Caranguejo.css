@@ -1,29 +1,205 @@
-/* O PAI: Controla o fundo e centraliza o card */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Lilita+One&display=swap');
+
+:root {
+  --color-card-bg: #FDF6E3;
+  --color-card-border: #D4A373;
+  --color-blue-dark: #1F3955;
+  --color-orange: #D56B2C;
+  --color-btn-shadow: #B35D10;
+}
+
+/* RESET */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* FUNDO */
+
 .caranguejo-page {
-  width: 100%;
+  width: 100vw;
   height: 100dvh;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
   background-image: url('../Imagens/FundoCaranguejo.jpeg');
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
-  /* Isso aqui é o que faz "flutuar" no meio da tela */
+
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-} /* <-- ESSA CHAVE FECHA O PAI E É ESSENCIAL */
 
-/* O FILHO: O retângulo do quiz */
-.quiz-container {
-  width: 90%;
-  max-width: 700px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 30px;
-  border-radius: 25px;
-  border: 4px solid #8b4513;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-  text-align: center;
+  padding: 20px;
 }
 
-/* O resto do seu estilo (pergunta-box, alternativas-grid, etc) vem aqui abaixo */
+/* CARD PRINCIPAL */
+
+.quiz-card {
+  width: 92%;
+  max-width: 850px;
+
+  background-color: var(--color-card-bg);
+
+  border: 4px solid var(--color-card-border);
+
+  border-radius: 40px;
+
+  padding: 35px 30px;
+
+  text-align: center;
+
+  box-shadow: 0 15px 0px rgba(0, 0, 0, 0.12);
+
+  position: relative;
+}
+
+/* TÍTULO */
+
+.quiz-card h1 {
+  font-family: 'Lilita One', cursive;
+
+  font-size: 3rem;
+
+  color: var(--color-blue-dark);
+
+  margin-bottom: 25px;
+}
+
+/* TIMER */
+
+.timer-box {
+  position: absolute;
+
+  top: 20px;
+  right: 20px;
+
+  background-color: var(--color-orange);
+
+  color: white;
+
+  padding: 10px 18px;
+
+  border-radius: 16px;
+
+  font-family: 'Fredoka', sans-serif;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  box-shadow: 0 5px 0 var(--color-btn-shadow);
+}
+
+/* PERGUNTA */
+
+.pergunta-box {
+  background-color: #fffaf0;
+
+  border: 3px solid #e6c7a1;
+
+  border-radius: 28px;
+
+  padding: 45px 25px;
+
+  margin-bottom: 30px;
+
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
+}
+
+.pergunta-box h2 {
+  font-family: 'Fredoka', sans-serif;
+
+  font-size: 2rem;
+
+  color: var(--color-blue-dark);
+
+  margin: 0;
+
+  line-height: 1.4;
+}
+
+/* ALTERNATIVAS */
+
+.alternativas-container {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px;
+}
+
+.alternativa-btn {
+  font-family: 'Fredoka', sans-serif;
+
+  background-color: var(--color-orange);
+
+  color: white;
+
+  border: none;
+
+  border-radius: 20px;
+
+  padding: 18px;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 0 var(--color-btn-shadow);
+
+  transition: all 0.15s ease;
+}
+
+.alternativa-btn:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+.alternativa-btn:active {
+  transform: translateY(3px);
+
+  box-shadow: 0 3px 0 var(--color-btn-shadow);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .quiz-card {
+    padding: 30px 18px;
+  }
+
+  .quiz-card h1 {
+    font-size: 2.2rem;
+  }
+
+  .pergunta-box h2 {
+    font-size: 1.4rem;
+  }
+
+  .alternativas-container {
+    grid-template-columns: 1fr;
+  }
+
+  .alternativa-btn {
+    font-size: 1rem;
+    padding: 16px;
+  }
+
+  .timer-box {
+    right: 20px;
+    top: -20px;
+    font-size: 1rem;
+  }
+}
