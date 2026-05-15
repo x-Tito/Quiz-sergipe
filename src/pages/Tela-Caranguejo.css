@@ -73,7 +73,10 @@ body {
 
   color: var(--color-blue-dark);
 
+  margin-top: 0;
   margin-bottom: 25px;
+
+  line-height: 1.1;
 }
 
 /* TIMER */
@@ -175,32 +178,11 @@ body {
 
 @media (max-width: 768px) {
 
-  .quiz-card {
-    padding: 30px 18px;
-  }
-
   .quiz-card h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    margin-bottom: 20px;
   }
 
-  .pergunta-box h2 {
-    font-size: 1.4rem;
-  }
-
-  .alternativas-container {
-    grid-template-columns: 1fr;
-  }
-
-  .alternativa-btn {
-    font-size: 1rem;
-    padding: 16px;
-  }
-
-  .timer-box {
-    right: 20px;
-    top: -20px;
-    font-size: 1rem;
-  }
 }
   /* OVERLAY */
 
@@ -362,14 +344,12 @@ body {
 }
 
 .top-controls {
-  position: absolute;
-
-  top: 20px;
-  right: 20px;
-
+  width: 100%;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .sound-btn {
