@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  overflow: auto;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url("/images/bg.jpg");
+  background-size: cover;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+/* CARD LATERAL */
+.side-card {
+  position: absolute;
+  width: 215px;
+  background: white;
+  border-radius: 14px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  overflow: visible;
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.side-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.left {
+  left: 20px;
+  top: 150px;
+}
+
+.right {
+  right: 20px;
+  top: 150px;
+}
+
+/* BOTÃO VOLTAR */
+.btn-voltar-topo {
+  position: absolute;
+  top: 15px;
+  left: 50px;
+  z-index: 999999;
+
+  padding: 10px 14px;
+  background:#e6c7a1;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: 0.2s;
+}

@@ -1,0 +1,11 @@
+/* Isso remove as margens padrão do navegador e garante o preenchimento total */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  overflow-x: hidden; /* Evita barras de rolagem horizontais indesejadas */
+}

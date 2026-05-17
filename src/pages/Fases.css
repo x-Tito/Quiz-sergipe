@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Lilita+One&display=swap');
+
+:root {
+  --color-card-bg: #FDF6E3;
+  --color-card-border: #D4A373;
+  --color-blue-dark: #1F3955;
+  --color-orange: #D56B2C;
+  --color-btn-shadow: #B35D10;
+}
+
+/* Reset básico para garantir que o cálculo de largura funcione */
+* {
+  box-sizing: border-box;
+}
+
+.container-fases {
+  width: 100vw;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url('../Imagens/tela-home.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Centralização Total */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Margem de segurança externa */
+}
+
+/* --- CARD CENTRAL --- */
+.card-fases {
+  /* O segredo para não encostar: width em % com um max-width fixo */
+  width: 92%; 
+  max-width: 420px;
+  
+  padding: 35px 20px;
+  background-color: var(--color-card-bg);
+  border: 4px solid var(--color-card-border);
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 15px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+  /* Garante que o card não suba demais ou desça demais */
+  margin: auto; 
+}
+
+.card-fases h1 {
+  font-family: 'Lilita One', cursive;
+  font-size: 2.5rem;
+  color: var(--color-blue-dark);
+  margin-bottom: 10px;
+}
+
+.botoes-fases {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* --- ESTILO DOS BOTÕES DE NÍVEL --- */
+.btn-nivel {
+  font-family: 'Fredoka', sans-serif;
+  padding: 14px;
+  border: none;
+  border-radius: 18px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+  transition: all 0.1s;
+  text-transform: uppercase;
+}
+
+.facil { background-color: #2ecc71; box-shadow: 0 6px 0 #27ae60; }
+.facil:active { transform: translateY(3px); box-shadow: 0 3px 0 #27ae60; }
+
+.medio { background-color: #f1c40f; box-shadow: 0 6px 0 #d4ac0d; }
+.medio:active { transform: translateY(3px); box-shadow: 0 3px 0 #d4ac0d; }
+
+.dificil { background-color: #e74c3c; box-shadow: 0 6px 0 #c0392b; }
+.dificil:active { transform: translateY(3px); box-shadow: 0 3px 0 #c0392b; }
+
+/* --- BOTÃO DE VOLTAR --- */
+.btn-voltar-topo {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  
+  font-family: 'Fredoka', sans-serif;
+  background-color: var(--color-orange);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--color-btn-shadow);
+  transition: all 0.2s;
+  z-index: 10;
+  text-transform: uppercase;
+}
+
+.btn-voltar-topo:hover {
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+.btn-voltar-topo:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 var(--color-btn-shadow);
+}
+
+/* --- RESPONSIVIDADE MOBILE --- */
+@media (max-width: 480px) {
+  .container-fases {
+    /* Aumentamos levemente o padding no mobile para garantir o afastamento das bordas */
+    padding: 15px; 
+  }
+
+  .card-fases {
+    /* No mobile, garantimos que ele ocupe 90% da largura, deixando 5% de margem de cada lado */
+    width: 90%; 
+    padding: 30px 15px;
+    border-radius: 35px;
+  }
+  
+  .card-fases h1 {
+    font-size: 2rem;
+  }
+
+  .btn-nivel {
+    font-size: 1.15rem;
+    padding: 12px;
+  }
+
+  .btn-voltar-topo {
+    top: 15px;
+    left: 15px;
+    padding: 10px 15px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 0 var(--color-btn-shadow);
+  }
+}
