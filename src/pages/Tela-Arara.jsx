@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef} from 'react';
 import './Tela-Arara.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ModalResultado from './ModalResultado.jsx';
@@ -32,6 +32,8 @@ function TelaArara() {
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
 
+  const intervalRef = useRef(null);
+
   const perguntas = [
     {
       pergunta: "Qual é a capital de Sergipe?",
@@ -57,21 +59,31 @@ function TelaArara() {
   ];
 
   useEffect(() => {
+  if (pausado || quizFinalizado) return;
 
-    if (pausado) return;
+  if (intervalRef.current) return;
 
-    if (tempo === 0) {
-      proximaPergunta();
-      return;
-    }
+  intervalRef.current = setInterval(() => {
+    setTempo((prev) => {
+      if (prev <= 1) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
 
-    const timer = setInterval(() => {
-      setTempo((prevTempo) => prevTempo - 1);
-    }, 1000);
+        setQuizFinalizado(true);
+        setPausado(true);
 
-    return () => clearInterval(timer);
+        return 0;
+      }
 
-  }, [tempo, pausado]);
+      return prev - 1;
+    });
+  }, 1000);
+
+  return () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+  };
+}, [pausado, quizFinalizado]);
 
   function proximaPergunta() {
 

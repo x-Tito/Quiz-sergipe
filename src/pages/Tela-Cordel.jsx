@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './Tela-Cordel.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -34,6 +34,9 @@ function TelaCordel() {
 
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
+  
+  const intervalRef = useRef(null);
+
 
   const perguntas = [
     {
@@ -60,35 +63,40 @@ function TelaCordel() {
   ];
 
   useEffect(() => {
+  if (pausado || quizFinalizado) return;
 
-    if (pausado || quizFinalizado) return;
+  if (intervalRef.current) return;
 
-    if (tempo === 0) {
-      proximaPergunta();
-      return;
-    }
+  intervalRef.current = setInterval(() => {
+    setTempo((prev) => {
+      if (prev <= 1) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
 
-    const timer = setInterval(() => {
-      setTempo((prevTempo) => prevTempo - 1);
-    }, 1000);
+        setQuizFinalizado(true);
+        setPausado(true);
 
-    return () => clearInterval(timer);
+        return 0;
+      }
 
-  }, [tempo, pausado, quizFinalizado]);
+      return prev - 1;
+    });
+  }, 1000);
+
+  return () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+  };
+}, [pausado, quizFinalizado]);
 
   function proximaPergunta() {
-
-    if (indicePergunta < perguntas.length - 1) {
-
-      setIndicePergunta(indicePergunta + 1);
-      setTempo(tempoInicial);
-
-    } else {
-
-      setQuizFinalizado(true);
-      setPausado(true);
-
-    }
+  if (indicePergunta < perguntas.length - 1) {
+    setIndicePergunta((prev) => prev + 1);
+  } else {
+    setQuizFinalizado(true);
+    setPausado(true);
+  }
+}
 
   }
 
@@ -326,6 +334,6 @@ function TelaCordel() {
 
   );
 
-}
+
 
 export default TelaCordel;

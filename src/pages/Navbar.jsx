@@ -1,6 +1,6 @@
 import { Music, Music2 } from 'lucide-react';
 import './Navbar.css';
-import ProfileImg from "../Imagens/profile.jpeg";
+import ProfileImg from "../Imagens/Profile.jpeg";
 
 function Navbar({ playerName, isMuted, toggleMusic }) {
   return (
