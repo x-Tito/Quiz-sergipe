@@ -89,6 +89,7 @@ function TelaCordel() {
   };
 }, [pausado, quizFinalizado]);
 
+
   function proximaPergunta() {
   if (indicePergunta < perguntas.length - 1) {
     setIndicePergunta((prev) => prev + 1);
@@ -97,8 +98,7 @@ function TelaCordel() {
     setPausado(true);
   }
 }
-
-  }
+  
 
   function verificarResposta(alternativa) {
 
@@ -333,7 +333,7 @@ function TelaCordel() {
     </div>
 
   );
-
+}
 
 
 export default TelaCordel;
