@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react';
-import './Tela-Caranguejo.css';
+import './Tela-Arara.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ModalResultado from './ModalResultado.jsx';
 import somAcerto from '../assets/Audio/acerto.wav';
 import somErro from '../assets/Audio/erro.mp3';
 
-import imgCaranguejo from '../Imagens/Personagens/PersCaranguejo.jpeg';
+import imgPapagaio from '../Imagens/Personagens/PersPapagaio.jpeg';
 
 import { Volume2, VolumeX } from "lucide-react";
 
-function TelaCaranguejo() {
+function TelaArara() {
 
   const navigate = useNavigate();
-  const location = useLocation(); 
+  const location = useLocation();
 
-  const tempoInicial = 
+  const tempoInicial =
     location.state?.tempoInicial || 30;
 
   const [menuAberto, setMenuAberto] = useState(false);
@@ -31,7 +31,6 @@ function TelaCaranguejo() {
   const [quizFinalizado, setQuizFinalizado] = useState(false);
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
-
 
   const perguntas = [
     {
@@ -79,12 +78,14 @@ function TelaCaranguejo() {
     if (indicePergunta < perguntas.length - 1) {
 
       setIndicePergunta(indicePergunta + 1);
+
       setTempo(tempoInicial);
 
     } else {
 
       setQuizFinalizado(true);
       setPausado(true);
+
     }
 
   }
@@ -94,15 +95,15 @@ function TelaCaranguejo() {
     if (travado) return;
 
     setRespostaSelecionada(alternativa);
+
     setTravado(true);
 
     const correta =
       perguntas[indicePergunta].correta;
 
     if (alternativa === correta) {
-
+       
       setAcertos((prev) => prev + 1);
-
       const audioAcerto =
         new Audio(somAcerto);
 
@@ -117,7 +118,7 @@ function TelaCaranguejo() {
     } else {
 
       setErros((prev) => prev + 1);
-      
+
       const audioErro =
         new Audio(somErro);
 
@@ -134,6 +135,7 @@ function TelaCaranguejo() {
     setTimeout(() => {
 
       setRespostaSelecionada(null);
+
       setTravado(false);
 
       proximaPergunta();
@@ -144,13 +146,16 @@ function TelaCaranguejo() {
 
   return (
 
-    <div className="caranguejo-page">
+    <div className="arara-page">
 
       <button
         className="btn-voltar-topo"
         onClick={() => {
+
           setMenuAberto(true);
+
           setPausado(true);
+
         }}
       >
         ← Voltar
@@ -165,32 +170,38 @@ function TelaCaranguejo() {
           </div>
 
           <button
-           className={`sound-btn ${somAtivo ? 'playing' : ''}`}
-           onClick={() => setSomAtivo(!somAtivo)}
-   >
-      {
-        somAtivo
-      ? <Volume2 size={22} color="#2ecc71" />
-      : <VolumeX size={22} />
-  }
-</button>
+            className={`sound-btn ${somAtivo ? 'playing' : ''}`}
+            onClick={() => setSomAtivo(!somAtivo)}
+          >
+
+            {
+              somAtivo
+              ? <Volume2 size={22} color="#2ecc71" />
+              : <VolumeX size={22} />
+            }
+
+          </button>
 
         </div>
 
-        <h1>Fase do Caranguejo</h1>
+        <h1>Fase da Arara</h1>
 
-        {/* CONTAINER DO PERSONAGEM E DA PERGUNTA */}
         <div className="pergunta-container">
-          <img 
-            src={imgCaranguejo} 
-            alt="Personagem Caranguejo" 
-            className="personagem-caranguejo" 
+
+          <img
+            src={imgPapagaio}
+            alt="Personagem Papagaio"
+            className="personagem-papagaio"
           />
+
           <div className="pergunta-box">
+
             <h2>
               {perguntas[indicePergunta].pergunta}
             </h2>
+
           </div>
+
         </div>
 
         <div className="alternativas-container">
@@ -220,7 +231,9 @@ function TelaCaranguejo() {
 
                   disabled={travado}
                 >
+
                   {alternativa}
+
                 </button>
 
               )
@@ -244,8 +257,11 @@ function TelaCaranguejo() {
                     className="modal-btn continuar"
 
                     onClick={() => {
+
                       setMenuAberto(false);
+
                       setPausado(false);
+
                     }}
                   >
                     Continuar
@@ -278,7 +294,15 @@ function TelaCaranguejo() {
                   <button
                     className="modal-btn home"
 
-                    onClick={() => navigate("/")}
+                    onClick={() => {
+
+                      setMenuAberto(false);
+
+                      setPausado(false);
+
+                      navigate("/");
+
+                    }}
                   >
                     Página Inicial
                   </button>
@@ -293,14 +317,13 @@ function TelaCaranguejo() {
         }
 
       </div>
-
         {
-      quizFinalizado && (
-      <ModalResultado
-      acertos={acertos}
-      erros={erros}
-      onHome={() => navigate("/")}
-      onReiniciar={() => navigate("/fases")}
+          quizFinalizado && (
+          <ModalResultado
+          acertos={acertos}
+          erros={erros}
+          onHome={() => navigate("/")}
+          onReiniciar={() => navigate("/fases")}
     />
   )
 }
@@ -310,4 +333,4 @@ function TelaCaranguejo() {
 
 }
 
-export default TelaCaranguejo;
+export default TelaArara;

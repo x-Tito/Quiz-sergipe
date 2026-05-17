@@ -6,10 +6,15 @@ import Navbar from "./pages/Navbar";
 import Home from "./pages/Home";
 import Fases from "./pages/Fases";
 import TelaCaranguejo from "./pages/Tela-Caranguejo";
+import TelaArara from "./pages/Tela-Arara";
+import TelaCaju from "./pages/Tela-Caju";
+import TelaCordel from "./pages/Tela-Cordel";
+import TelaFogueira from "./pages/Tela-fogueira";
 import ModalNome from "./pages/ModalNome";
 
-// Áudio (ajustado para o nome do seu arquivo no VS Code)
+// Áudio (Ajustado para evitar extensão duplicada caso dê erro)
 import temaJogo from './assets/Audio/tema-jogo.mp3.mp3'; 
+import Telafogueira from "./pages/Tela-fogueira";
 
 function MainContent({ isMuted, toggleMusic, playerName }) {
   const location = useLocation();
@@ -29,7 +34,13 @@ function MainContent({ isMuted, toggleMusic, playerName }) {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/fases" element={<Fases />} />
+        
+        {/* ROTAS DAS FASES TOTALMENTE CONFIGURADAS */}
         <Route path="/caranguejo" element={<TelaCaranguejo />} />
+        <Route path="/arara" element={<TelaArara />} /> 
+        <Route path="/Caju" element={<TelaCaju />} />
+        <Route path="/Fogueira" element={<TelaFogueira />} />
+        <Route path="/Cordel" element={<TelaCordel />} />
       </Routes>
     </>
   );

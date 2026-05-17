@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
-import './Tela-Caranguejo.css';
+import './Tela-Cordel.css';
 import { useNavigate, useLocation } from 'react-router-dom';
-import ModalResultado from './ModalResultado.jsx';
+
 import somAcerto from '../assets/Audio/acerto.wav';
 import somErro from '../assets/Audio/erro.mp3';
 
-import imgCaranguejo from '../Imagens/Personagens/PersCaranguejo.jpeg';
+import ModalResultado from './ModalResultado.jsx';
+
+import imgCordel from '../Imagens/Personagens/PersCordel.jpeg';
 
 import { Volume2, VolumeX } from "lucide-react";
 
-function TelaCaranguejo() {
+function TelaCordel() {
 
   const navigate = useNavigate();
-  const location = useLocation(); 
+  const location = useLocation();
 
-  const tempoInicial = 
+  const tempoInicial =
     location.state?.tempoInicial || 30;
 
   const [menuAberto, setMenuAberto] = useState(false);
@@ -29,9 +31,9 @@ function TelaCaranguejo() {
   const [tempo, setTempo] = useState(tempoInicial);
 
   const [quizFinalizado, setQuizFinalizado] = useState(false);
+
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
-
 
   const perguntas = [
     {
@@ -59,7 +61,7 @@ function TelaCaranguejo() {
 
   useEffect(() => {
 
-    if (pausado) return;
+    if (pausado || quizFinalizado) return;
 
     if (tempo === 0) {
       proximaPergunta();
@@ -72,7 +74,7 @@ function TelaCaranguejo() {
 
     return () => clearInterval(timer);
 
-  }, [tempo, pausado]);
+  }, [tempo, pausado, quizFinalizado]);
 
   function proximaPergunta() {
 
@@ -85,6 +87,7 @@ function TelaCaranguejo() {
 
       setQuizFinalizado(true);
       setPausado(true);
+
     }
 
   }
@@ -103,8 +106,7 @@ function TelaCaranguejo() {
 
       setAcertos((prev) => prev + 1);
 
-      const audioAcerto =
-        new Audio(somAcerto);
+      const audioAcerto = new Audio(somAcerto);
 
       if (somAtivo) {
 
@@ -117,9 +119,8 @@ function TelaCaranguejo() {
     } else {
 
       setErros((prev) => prev + 1);
-      
-      const audioErro =
-        new Audio(somErro);
+
+      const audioErro = new Audio(somErro);
 
       if (somAtivo) {
 
@@ -142,9 +143,31 @@ function TelaCaranguejo() {
 
   }
 
+  function reiniciarQuiz() {
+
+    setIndicePergunta(0);
+
+    setTempo(tempoInicial);
+
+    setAcertos(0);
+
+    setErros(0);
+
+    setQuizFinalizado(false);
+
+    setMenuAberto(false);
+
+    setPausado(false);
+
+    setRespostaSelecionada(null);
+
+    setTravado(false);
+
+  }
+
   return (
 
-    <div className="caranguejo-page">
+    <div className="cordel-page">
 
       <button
         className="btn-voltar-topo"
@@ -165,32 +188,38 @@ function TelaCaranguejo() {
           </div>
 
           <button
-           className={`sound-btn ${somAtivo ? 'playing' : ''}`}
-           onClick={() => setSomAtivo(!somAtivo)}
-   >
-      {
-        somAtivo
-      ? <Volume2 size={22} color="#2ecc71" />
-      : <VolumeX size={22} />
-  }
-</button>
+            className={`sound-btn ${somAtivo ? 'playing' : ''}`}
+            onClick={() => setSomAtivo(!somAtivo)}
+          >
+
+            {
+              somAtivo
+                ? <Volume2 size={22} color="#2ecc71" />
+                : <VolumeX size={22} />
+            }
+
+          </button>
 
         </div>
 
-        <h1>Fase do Caranguejo</h1>
+        <h1>Fase do Cordel</h1>
 
-        {/* CONTAINER DO PERSONAGEM E DA PERGUNTA */}
         <div className="pergunta-container">
-          <img 
-            src={imgCaranguejo} 
-            alt="Personagem Caranguejo" 
-            className="personagem-caranguejo" 
+
+          <img
+            src={imgCordel}
+            alt="Personagem Cordel"
+            className="personagem-cordel"
           />
+
           <div className="pergunta-box">
+
             <h2>
               {perguntas[indicePergunta].pergunta}
             </h2>
+
           </div>
+
         </div>
 
         <div className="alternativas-container">
@@ -203,7 +232,7 @@ function TelaCaranguejo() {
                   key={index}
 
                   className={`alternativa-btn
-
+                  
                   ${
                     respostaSelecionada === alternativa
                       ? alternativa === perguntas[indicePergunta].correta
@@ -211,7 +240,7 @@ function TelaCaranguejo() {
                         : "errada"
                       : ""
                   }
-
+                  
                   `}
 
                   onClick={() =>
@@ -220,7 +249,9 @@ function TelaCaranguejo() {
 
                   disabled={travado}
                 >
+
                   {alternativa}
+
                 </button>
 
               )
@@ -253,31 +284,13 @@ function TelaCaranguejo() {
 
                   <button
                     className="modal-btn reiniciar"
-
-                    onClick={() => {
-
-                      setIndicePergunta(0);
-
-                      setTempo(tempoInicial);
-
-                      setAcertos(0);
-
-                      setErros(0);
-
-                      setQuizFinalizado(false);
-
-                      setMenuAberto(false);
-
-                      setPausado(false);
-
-                    }}
+                    onClick={reiniciarQuiz}
                   >
                     Reiniciar
                   </button>
 
                   <button
                     className="modal-btn home"
-
                     onClick={() => navigate("/")}
                   >
                     Página Inicial
@@ -294,20 +307,25 @@ function TelaCaranguejo() {
 
       </div>
 
-        {
-      quizFinalizado && (
-      <ModalResultado
-      acertos={acertos}
-      erros={erros}
-      onHome={() => navigate("/")}
-      onReiniciar={() => navigate("/fases")}
-    />
-  )
-}
+      {
+        quizFinalizado && (
+
+          <ModalResultado
+            acertos={acertos}
+            erros={erros}
+
+            onHome={() => navigate("/")}
+
+            onReiniciar={() => navigate("/fases")}
+          />
+
+        )
+      }
+
     </div>
 
   );
 
 }
 
-export default TelaCaranguejo;
+export default TelaCordel;

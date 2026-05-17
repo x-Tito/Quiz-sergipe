@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import './Tela-Caranguejo.css';
+import './Tela-Caju.css'; 
 import { useNavigate, useLocation } from 'react-router-dom';
 import ModalResultado from './ModalResultado.jsx';
 import somAcerto from '../assets/Audio/acerto.wav';
 import somErro from '../assets/Audio/erro.mp3';
 
-import imgCaranguejo from '../Imagens/Personagens/PersCaranguejo.jpeg';
+// Se você tiver um personagem específico para a fase do Caju, ajuste o nome do arquivo aqui
+import imgCajuPersonagem from '../Imagens/Personagens/PersCaju.jpeg';
 
 import { Volume2, VolumeX } from "lucide-react";
 
-function TelaCaranguejo() {
+function TelaCaju() { // CORRIGIDO: Nome da função alterado para TelaCaju
 
   const navigate = useNavigate();
   const location = useLocation(); 
@@ -36,7 +37,7 @@ function TelaCaranguejo() {
   const perguntas = [
     {
       pergunta: "Qual é a capital de Sergipe?",
-      alternativas: [
+      alternativas : [
         "Aracaju",
         "Salvador",
         "Recife",
@@ -85,6 +86,7 @@ function TelaCaranguejo() {
 
       setQuizFinalizado(true);
       setPausado(true);
+
     }
 
   }
@@ -116,8 +118,9 @@ function TelaCaranguejo() {
 
     } else {
 
-      setErros((prev) => prev + 1);
-      
+
+    setErro((prev) => prev + 1);
+
       const audioErro =
         new Audio(somErro);
 
@@ -144,7 +147,7 @@ function TelaCaranguejo() {
 
   return (
 
-    <div className="caranguejo-page">
+    <div className="caju-page"> {/* Ajustado para refletir a fase do Caju */}
 
       <button
         className="btn-voltar-topo"
@@ -167,24 +170,24 @@ function TelaCaranguejo() {
           <button
            className={`sound-btn ${somAtivo ? 'playing' : ''}`}
            onClick={() => setSomAtivo(!somAtivo)}
-   >
-      {
-        somAtivo
-      ? <Volume2 size={22} color="#2ecc71" />
-      : <VolumeX size={22} />
-  }
-</button>
+          >
+            {
+              somAtivo
+            ? <Volume2 size={22} color="#2ecc71" />
+            : <VolumeX size={22} />
+            }
+          </button>
 
         </div>
 
-        <h1>Fase do Caranguejo</h1>
+        <h1>Fase do Caju</h1> {/* Alterado o título da fase */}
 
         {/* CONTAINER DO PERSONAGEM E DA PERGUNTA */}
         <div className="pergunta-container">
           <img 
-            src={imgCaranguejo} 
-            alt="Personagem Caranguejo" 
-            className="personagem-caranguejo" 
+            src={imgCajuPersonagem} 
+            alt="Personagem do Jogo" 
+            className="personagem-caju" 
           />
           <div className="pergunta-box">
             <h2>
@@ -263,7 +266,7 @@ function TelaCaranguejo() {
                       setAcertos(0);
 
                       setErros(0);
-
+                      
                       setQuizFinalizado(false);
 
                       setMenuAberto(false);
@@ -271,14 +274,17 @@ function TelaCaranguejo() {
                       setPausado(false);
 
                     }}
-                  >
+                  > 
                     Reiniciar
                   </button>
 
                   <button
                     className="modal-btn home"
-
-                    onClick={() => navigate("/")}
+                    onClick={() => {
+                      setMenuAberto(false);
+                      setPausado(false);
+                      window.location.href = "/"; // CORRIGIDO: Redirecionamento 100% garantido para a Home
+                    }}
                   >
                     Página Inicial
                   </button>
@@ -293,15 +299,14 @@ function TelaCaranguejo() {
         }
 
       </div>
-
-        {
-      quizFinalizado && (
-      <ModalResultado
-      acertos={acertos}
-      erros={erros}
-      onHome={() => navigate("/")}
-      onReiniciar={() => navigate("/fases")}
-    />
+      {
+        quizFinalizado && (
+        <ModalResultado
+        acertos={acertos}
+        erros={erros}
+        onHome={() => navigate("/")}
+        onReiniciar={() => navigate("/fases")}
+     />
   )
 }
     </div>
@@ -310,4 +315,4 @@ function TelaCaranguejo() {
 
 }
 
-export default TelaCaranguejo;
+export default TelaCaju; 

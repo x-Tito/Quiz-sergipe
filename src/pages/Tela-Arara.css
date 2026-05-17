@@ -9,7 +9,7 @@
 }
 
 /* ==========================================================================
-   RESET & ESTRUTURA GLOBAL
+   RESET & ESTRUTURA GLOBAL (FUNDO DA ARARA)
    ========================================================================== */
 
 * {
@@ -21,16 +21,16 @@ body {
   overflow: hidden;
 }
 
-/* FUNDO DA PÁGINA CORRIGIDO (PRAIA/MANGUE DO CARANGUEJO) */
-.caranguejo-page {
+/* FUNDO DO SISTEMA AJUSTADO PELO TOPO */
+.arara-page {
   width: 100vw;
   height: 100dvh;
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url('../Imagens/FundoCaranguejo.jpeg'); /* CORREÇÃO DO FUNDO */
+  background-image: url('../Imagens/FundoPapagaio.jpeg'); 
   background-size: cover;
-  background-position: center;
+  background-position: center top; /* Garante que a cabeça da arara da árvore apareça */
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
@@ -124,24 +124,32 @@ body {
 }
 
 /* ==========================================================================
-   CONTAINER DA PERGUNTA E DO BONECO
+   CONTAINER DA PERGUNTA (ALINHADO POR CIMA)
    ========================================================================== */
 
 .pergunta-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Alinha topo do balão com a cabeça da arara */
   justify-content: center;
   gap: 20px;
   margin-bottom: 30px;
   width: 100%;
 }
 
-.personagem-caranguejo {
-  height: 150px;
+/* ==========================================================================
+   AJUSTE DE TAMANHO DA ARARA PEQUENA (QUIZ)
+   ========================================================================== */
+
+.personagem-papagaio {
+  height: 150px; /* Impede que a arara fique gigante engolindo os botões */
   width: auto;
   object-fit: contain;
   animation: balancoSuave 3s ease-in-out infinite;
 }
+
+/* ==========================================================================
+   BALÃO DA PERGUNTA
+   ========================================================================== */
 
 .quiz-card .pergunta-box {
   flex: 1;
@@ -168,8 +176,7 @@ body {
     content: '';
     position: absolute;
     left: -15px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 35px;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
     border-right: 15px solid #fffaf0;
@@ -180,8 +187,7 @@ body {
     content: '';
     position: absolute;
     left: -19px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 35px;
     border-top: 17px solid transparent;
     border-bottom: 17px solid transparent;
     border-right: 17px solid #e6c7a1;
@@ -190,7 +196,7 @@ body {
 }
 
 /* ==========================================================================
-   BOTÕES DE ALTERNATIVAS COLORIDAS DO JOGO
+   ALTERNATIVAS COLORIDAS (IGUAL AO DO CARANGUEJO)
    ========================================================================== */
 
 .alternativas-container {
@@ -330,17 +336,17 @@ body {
   transition: 0.15s;
 }
 
-/* ADICIONADO: Todos os botões do modal de pausa agora usam as cores laranjas do jogo */
+.modal-btn:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+/* Botões do modal laranjas */
 .modal-btn.continuar,
 .modal-btn.reiniciar,
 .modal-btn.home {
   background-color: var(--color-orange) !important;
   box-shadow: 0 6px 0 var(--color-btn-shadow) !important;
-}
-
-.modal-btn:hover {
-  transform: scale(1.03);
-  filter: brightness(1.05);
 }
 
 .modal-btn:active {
@@ -365,7 +371,7 @@ body {
 }
 
 /* ==========================================================================
-   ANIMAÇÕES DO SISTEMA
+   ANIMAÇÕES
    ========================================================================== */
 
 @keyframes pulseCorreta {
@@ -388,13 +394,13 @@ body {
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE (MOBILE / TELAS PEQUENAS)
+   RESPONSIVIDADE (MOBILE / IPHONE SE / ETC)
    ========================================================================== */
 
 @media (max-width: 768px) {
-  .caranguejo-page {
+  .arara-page {
     align-items: flex-start;
-    padding: 75px 10px 20px 10px; /* Margem para o botão voltar fixo */
+    padding: 75px 10px 20px 10px;
   }
 
   .quiz-card {
@@ -410,12 +416,14 @@ body {
 
   .pergunta-container {
     flex-direction: column;
+    align-items: center;
     gap: 8px;
     margin-bottom: 15px;
   }
 
-  .personagem-caranguejo {
-    height: 85px; /* Tamanho ajustado para o mobile */
+  /* Reduz tamanho da arara do quiz para caber no mobile */
+  .personagem-papagaio {
+    height: 85px;
   }
 
   .quiz-card .pergunta-box {

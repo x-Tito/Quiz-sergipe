@@ -17,19 +17,36 @@ function Fases() {
         
         <div className="botoes-fases">
           <button 
-            className="btn-nivel facil" 
-            onClick={() => navigate("/caranguejo")}
+          className="btn-nivel facil" 
+          onClick={() =>
+          navigate("/Fogueira", {
+          state: { tempoInicial: 50 }
+          })
+          }
           >
-            Fácil
+              Fácil
           </button>
           
-          <button className="btn-nivel medio">
+          <button className="btn-nivel medio"
+          onClick={() =>
+          navigate("/Cordel", {
+          state: { tempoInicial: 30 }
+          })
+          } 
+          >
             Médio
           </button>
           
-          <button className="btn-nivel dificil">
+          <button
+            className="btn-nivel dificil"
+            onClick={() =>
+            navigate("/caranguejo", {
+             state: { tempoInicial: 15 }
+            })
+            }     
+            >
             Difícil
-          </button>
+            </button>
         </div>
       </div>
     </div>

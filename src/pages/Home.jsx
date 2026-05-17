@@ -1,14 +1,13 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import './Home.css';
 
 function Home() {
-
   const navigate = useNavigate();
 
   return (
     <div className="home-page">
-      <div className="quiz-card">
-
+      <div className="home-card">
         <h1 className="quiz-title">
           <span className="letter-green">Q</span>
           <span className="letter-orange">u</span>
@@ -24,13 +23,15 @@ function Home() {
           <span className="letter-blue">e</span>
         </h1>
 
-        <button 
-          className="btn-iniciar"
-          onClick={() => navigate("/Fases")}
-        >
-          INICIAR
-        </button>
-
+        {/* Container para forçar a centralização e largura do botão */}
+        <div className="btn-iniciar-container">
+          <button 
+            className="btn-iniciar"
+            onClick={() => navigate("/Fases")}
+          >
+            Iniciar
+          </button>
+        </div>
       </div>
     </div>
   );

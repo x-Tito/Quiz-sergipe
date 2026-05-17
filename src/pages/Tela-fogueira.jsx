@@ -1,20 +1,23 @@
 import { useEffect, useState } from 'react';
-import './Tela-Caranguejo.css';
+import './Tela-fogueira.css';
+
 import { useNavigate, useLocation } from 'react-router-dom';
+
 import ModalResultado from './ModalResultado.jsx';
+
 import somAcerto from '../assets/Audio/acerto.wav';
 import somErro from '../assets/Audio/erro.mp3';
 
-import imgCaranguejo from '../Imagens/Personagens/PersCaranguejo.jpeg';
+import img from '../Imagens/Personagens/PersFogueira.jpeg';
 
 import { Volume2, VolumeX } from "lucide-react";
 
-function TelaCaranguejo() {
+function TelaFogueira() {
 
   const navigate = useNavigate();
-  const location = useLocation(); 
+  const location = useLocation();
 
-  const tempoInicial = 
+  const tempoInicial =
     location.state?.tempoInicial || 30;
 
   const [menuAberto, setMenuAberto] = useState(false);
@@ -29,9 +32,9 @@ function TelaCaranguejo() {
   const [tempo, setTempo] = useState(tempoInicial);
 
   const [quizFinalizado, setQuizFinalizado] = useState(false);
+
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
-
 
   const perguntas = [
     {
@@ -85,6 +88,7 @@ function TelaCaranguejo() {
 
       setQuizFinalizado(true);
       setPausado(true);
+
     }
 
   }
@@ -117,7 +121,7 @@ function TelaCaranguejo() {
     } else {
 
       setErros((prev) => prev + 1);
-      
+
       const audioErro =
         new Audio(somErro);
 
@@ -144,7 +148,7 @@ function TelaCaranguejo() {
 
   return (
 
-    <div className="caranguejo-page">
+    <div className="fogueira-page">
 
       <button
         className="btn-voltar-topo"
@@ -165,32 +169,36 @@ function TelaCaranguejo() {
           </div>
 
           <button
-           className={`sound-btn ${somAtivo ? 'playing' : ''}`}
-           onClick={() => setSomAtivo(!somAtivo)}
-   >
-      {
-        somAtivo
-      ? <Volume2 size={22} color="#2ecc71" />
-      : <VolumeX size={22} />
-  }
-</button>
+            className={`sound-btn ${somAtivo ? 'playing' : ''}`}
+            onClick={() => setSomAtivo(!somAtivo)}
+          >
+            {
+              somAtivo
+                ? <Volume2 size={22} color="#2ecc71" />
+                : <VolumeX size={22} />
+            }
+          </button>
 
         </div>
 
-        <h1>Fase do Caranguejo</h1>
+        <h1>Fase do São João</h1>
 
-        {/* CONTAINER DO PERSONAGEM E DA PERGUNTA */}
         <div className="pergunta-container">
-          <img 
-            src={imgCaranguejo} 
-            alt="Personagem Caranguejo" 
-            className="personagem-caranguejo" 
+
+          <img
+            src={img}
+            alt="Personagem"
+            className="personagem-fogueira"
           />
+
           <div className="pergunta-box">
+
             <h2>
               {perguntas[indicePergunta].pergunta}
             </h2>
+
           </div>
+
         </div>
 
         <div className="alternativas-container">
@@ -203,15 +211,13 @@ function TelaCaranguejo() {
                   key={index}
 
                   className={`alternativa-btn
-
-                  ${
-                    respostaSelecionada === alternativa
-                      ? alternativa === perguntas[indicePergunta].correta
-                        ? "correta"
-                        : "errada"
-                      : ""
-                  }
-
+                    ${
+                      respostaSelecionada === alternativa
+                        ? alternativa === perguntas[indicePergunta].correta
+                          ? "correta"
+                          : "errada"
+                        : ""
+                    }
                   `}
 
                   onClick={() =>
@@ -294,20 +300,23 @@ function TelaCaranguejo() {
 
       </div>
 
-        {
-      quizFinalizado && (
-      <ModalResultado
-      acertos={acertos}
-      erros={erros}
-      onHome={() => navigate("/")}
-      onReiniciar={() => navigate("/fases")}
-    />
-  )
-}
+      {
+        quizFinalizado && (
+
+          <ModalResultado
+            acertos={acertos}
+            erros={erros}
+            onHome={() => navigate("/")}
+            onReiniciar={() => navigate("/fases")}
+          />
+
+        )
+      }
+
     </div>
 
   );
 
 }
 
-export default TelaCaranguejo;
+export default TelaFogueira;
