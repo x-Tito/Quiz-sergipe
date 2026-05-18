@@ -121,10 +121,6 @@ function QuizPhase({
     return () => clearInterval(timer);
   }, [carregando, pausado, travado, quizFinalizado, perguntaAtual]);
 
-  useEffect(() => {
-    setTempo(tempoInicial);
-  }, [indicePergunta, tempoInicial]);
-
   async function concluirQuiz() {
     if (!quizId || finalizandoRef.current) {
       return;
@@ -146,29 +142,34 @@ function QuizPhase({
   }
 
   function avancarPergunta() {
-    if (indicePergunta < perguntas.length - 1) {
-      setIndicePergunta((indiceAtual) => indiceAtual + 1);
-      setRespostaSelecionadaId(null);
-      setRespostaCorreta(false);
-      setTravado(false);
-      return;
-    }
 
+  if (tempo <= 0) {
     concluirQuiz();
+    return;
   }
+
+  if (indicePergunta < perguntas.length - 1) {
+
+    setIndicePergunta((indiceAtual) => indiceAtual + 1);
+
+    setRespostaSelecionadaId(null);
+    setRespostaCorreta(false);
+    setTravado(false);
+
+    return;
+  }
+
+  concluirQuiz();
+}
 
   function tratarTempoEsgotado() {
-    if (travado || quizFinalizado) {
-      return;
-    }
 
-    setErros((valorAtual) => valorAtual + 1);
-    setTravado(true);
-
-    timeoutRespostaRef.current = setTimeout(() => {
-      avancarPergunta();
-    }, 500);
+  if (travado || quizFinalizado) {
+    return;
   }
+
+  concluirQuiz();
+}
 
   async function verificarResposta(alternativa) {
     if (travado || !perguntaAtual) {
@@ -213,7 +214,7 @@ function QuizPhase({
   }
 
   function reiniciarQuiz() {
-    window.location.reload();
+    navigate("/fases");
   }
 
   return (
