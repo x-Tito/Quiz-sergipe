@@ -357,17 +357,15 @@ body {
 /* ==========================================================================
    FEEDBACKS DE RESPOSTAS DO QUIZ
    ========================================================================== */
-
+   
 .correta {
-  background-color: #2ecc71 !important;
-  box-shadow: 0 6px 0 #27ae60 !important;
-  animation: pulseCorreta 0.3s ease;
+  background-color: #7fffd4 !important;
+  box-shadow: 0 5px 0 #57d9b5 !important;
 }
 
 .errada {
-  background-color: #e74c3c !important;
-  box-shadow: 0 6px 0 #c0392b !important;
-  animation: shakeErro 0.3s ease;
+  background-color: #ff8a8a !important;
+  box-shadow: 0 5px 0 #e96b6b !important;
 }
 
 /* ==========================================================================

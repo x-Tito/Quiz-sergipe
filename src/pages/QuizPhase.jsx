@@ -36,7 +36,7 @@ function QuizPhase({
   const [indicePergunta, setIndicePergunta] = useState(0);
   const [tempo, setTempo] = useState(tempoInicial);
   const [respostaSelecionadaId, setRespostaSelecionadaId] = useState(null);
-  const [respostaCorreta, setRespostaCorreta] = useState(false);
+  const [respostaCorreta, setRespostaCorreta] = useState(null);
 
   const [quizFinalizado, setQuizFinalizado] = useState(false);
   const [acertos, setAcertos] = useState(0);
@@ -46,6 +46,8 @@ function QuizPhase({
   const timeoutRespostaRef = useRef(null);
 
   const perguntaAtual = perguntas[indicePergunta] ?? null;
+
+  const [perguntasRespondidas, setPerguntasRespondidas] = useState(0);
 
   useEffect(() => {
     return () => {
@@ -67,7 +69,7 @@ function QuizPhase({
         setPausado(false);
         setTravado(false);
         setRespostaSelecionadaId(null);
-        setRespostaCorreta(false);
+        setRespostaCorreta(null);
         setIndicePergunta(0);
         setAcertos(0);
         setErros(0);
@@ -130,8 +132,10 @@ function QuizPhase({
 
     try {
       const resultado = await finalizarQuiz(quizId);
-      setAcertos(resultado.totalAcertos);
-      setErros(resultado.totalErros);
+      await finalizarQuiz(quizId);
+
+      setQuizFinalizado(true);
+      setPausado(true);
       setQuizFinalizado(true);
       setPausado(true);
     } catch (error) {
@@ -153,7 +157,7 @@ function QuizPhase({
     setIndicePergunta((indiceAtual) => indiceAtual + 1);
 
     setRespostaSelecionadaId(null);
-    setRespostaCorreta(false);
+    setRespostaCorreta(null);
     setTravado(false);
 
     return;
@@ -172,6 +176,7 @@ function QuizPhase({
 }
 
   async function verificarResposta(alternativa) {
+    
     if (travado || !perguntaAtual) {
       return;
     }
@@ -202,6 +207,8 @@ function QuizPhase({
         }
       }
 
+      setPerguntasRespondidas((valorAtual) => valorAtual + 1);
+
       timeoutRespostaRef.current = setTimeout(() => {
         avancarPergunta();
       }, 1200);
@@ -209,7 +216,7 @@ function QuizPhase({
       setErroApi(error.message || "Nao foi possivel enviar a resposta.");
       setTravado(false);
       setRespostaSelecionadaId(null);
-      setRespostaCorreta(false);
+      setRespostaCorreta(null);
     }
   }
 
@@ -273,10 +280,12 @@ function QuizPhase({
               {perguntaAtual.alternativas.map((alternativa) => {
                 const classeResposta =
                   respostaSelecionadaId === alternativa.id
-                    ? respostaCorreta
-                      ? "correta"
-                      : "errada"
-                    : "";
+                  ? respostaCorreta === true
+                  ? "correta"
+                  : respostaCorreta === false
+                  ? "errada"
+                  : ""
+                  : "";
 
                 return (
                   <button
