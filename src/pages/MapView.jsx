@@ -98,7 +98,7 @@ function MapView() {
         ))}
       </MapContainer>
 
-      <button className="btn-voltar-topo" onClick={() => navigate("/")}>
+      <button className="btn-voltar-mapa" onClick={() => navigate("/")}>
         ← Voltar
       </button>
 

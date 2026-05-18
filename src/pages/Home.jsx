@@ -37,7 +37,7 @@ function Home() {
             className="btn-iniciar"
             onClick={() => navigate("/mapa")}
           >
-            Mapa
+            Conheça Sergipe
           </button>
         </div>
       </div>
