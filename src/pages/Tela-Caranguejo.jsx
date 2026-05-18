@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef} from 'react';
 import './Tela-Caranguejo.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ModalResultado from './ModalResultado.jsx';
@@ -32,6 +32,8 @@ function TelaCaranguejo() {
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
 
+  const intervalRef = useRef(null);
+
 
   const perguntas = [
     {
@@ -58,28 +60,29 @@ function TelaCaranguejo() {
   ];
 
   useEffect(() => {
+  if (pausado || quizFinalizado) return;
 
-    if (pausado) return;
+  const timer = setInterval(() => {
+    setTempo((prevTempo) => {
+      if (prevTempo <= 1) {
+        setQuizFinalizado(true);
+        setPausado(true);
+        return 0;
+      }
 
-    if (tempo === 0) {
-      proximaPergunta();
-      return;
-    }
+      return prevTempo - 1;
+    });
+  }, 1000);
 
-    const timer = setInterval(() => {
-      setTempo((prevTempo) => prevTempo - 1);
-    }, 1000);
+  return () => clearInterval(timer);
+}, [pausado, quizFinalizado]);
 
-    return () => clearInterval(timer);
-
-  }, [tempo, pausado]);
 
   function proximaPergunta() {
 
     if (indicePergunta < perguntas.length - 1) {
 
-      setIndicePergunta(indicePergunta + 1);
-      setTempo(tempoInicial);
+      setIndicePergunta((prev) => prev + 1);
 
     } else {
 

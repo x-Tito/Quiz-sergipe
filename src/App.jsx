@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-// Importação dos seus componentes e páginas
-import MapView from "./pages/MapView";
+
 import Navbar from "./pages/Navbar";
+import MapView from "./pages/MapView";
+
 import Home from "./pages/Home";
 import Fases from "./pages/Fases";
 import TelaCaranguejo from "./pages/Tela-Caranguejo";
@@ -42,7 +43,7 @@ function MainContent({ isMuted, toggleMusic, playerName }) {
         <Route path="/fogueira" element={<TelaFogueira />} />
         <Route path="/cordel" element={<TelaCordel />} />
 
-        {/* SEU MAPA */}
+        {/* MAPA */}
         <Route path="/mapa" element={<MapView />} />
       </Routes>
     </>
