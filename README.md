@@ -1,16 +1,52 @@
-# React + Vite
+# Quiz Sergipe Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend React + Vite do Quiz Sergipe, consumindo a API separada.
 
-Currently, two official plugins are available:
+## Configuracao da API
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Crie um arquivo `.env` na raiz do projeto com:
 
-## React Compiler
+```bash
+VITE_API_URL=http://localhost:5095
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Se a API estiver publicada no Render:
 
-## Expanding the ESLint configuration
+```bash
+VITE_API_URL=https://sua-api.onrender.com
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Existe um modelo em [.env.example](./.env.example).
+
+## Rodar localmente
+
+1. Instale as dependencias
+
+```bash
+npm install
+```
+
+2. Rode o frontend
+
+```bash
+npm run dev
+```
+
+3. Garanta que a API esteja rodando e com CORS liberado para a URL do Vite.
+
+## Fluxo integrado
+
+As fases agora:
+
+- iniciam um quiz real na API
+- carregam as perguntas de `GET /api/quiz/{quizId}/perguntas`
+- enviam respostas para `POST /api/quiz/responder`
+- finalizam com `POST /api/quiz/{quizId}/finalizar`
+
+## Teste rapido
+
+1. Suba a API.
+2. Configure `VITE_API_URL`.
+3. Suba o frontend.
+4. Entre em uma fase.
+5. Verifique se a pergunta exibida veio da API.
