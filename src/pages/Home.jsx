@@ -32,9 +32,18 @@ function Home() {
             Iniciar
           </button>
         </div>
+        <div className="btn-iniciar-container">
+          <button 
+            className="btn-iniciar"
+            onClick={() => navigate("/mapa")}
+          >
+            Mapa
+          </button>
+        </div>
       </div>
     </div>
   );
 }
+         
 
 export default Home;
