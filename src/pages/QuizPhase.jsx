@@ -5,12 +5,30 @@ import { Volume2, VolumeX } from "lucide-react";
 import ModalResultado from "./ModalResultado.jsx";
 import somAcerto from "../assets/Audio/acerto.wav";
 import somErro from "../assets/Audio/erro.mp3";
+import fundoCaju from "../Imagens/FundoCaju.jpeg";
+import fundoCaranguejo from "../Imagens/FundoCaranguejo.jpeg";
+import fundoCordel from "../Imagens/FundoCordel.jpeg";
+import fundoFogueira from "../Imagens/FundoFogueira.jpeg";
+import fundoPapagaio from "../Imagens/FundoPapagaio.jpeg";
 import {
   finalizarQuiz,
   iniciarQuiz,
   listarPerguntas,
   responderPergunta
 } from "../services/quizApi";
+
+const BACKGROUNDS = [
+  fundoCaju,
+  fundoCaranguejo,
+  fundoCordel,
+  fundoFogueira,
+  fundoPapagaio
+];
+
+function sortearBackground() {
+  const indice = Math.floor(Math.random() * BACKGROUNDS.length);
+  return BACKGROUNDS[indice];
+}
 
 function QuizPhase({
   title,
@@ -30,6 +48,7 @@ function QuizPhase({
   const [travado, setTravado] = useState(false);
   const [carregando, setCarregando] = useState(true);
   const [erroApi, setErroApi] = useState("");
+  const [backgroundAtual] = useState(() => sortearBackground());
 
   const [quizId, setQuizId] = useState("");
   const [perguntas, setPerguntas] = useState([]);
@@ -224,8 +243,12 @@ function QuizPhase({
     navigate("/fases");
   }
 
+  const pageStyle = {
+    backgroundImage: `url(${backgroundAtual})`
+  };
+
   return (
-    <div className={pageClassName}>
+    <div className={pageClassName} style={pageStyle}>
       <button
         className="btn-voltar-topo"
         onClick={() => {
