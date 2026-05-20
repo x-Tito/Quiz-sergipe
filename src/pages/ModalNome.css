@@ -1,8 +1,6 @@
-/* Importando as fontes usadas na sua Home ( Fredoka e Lilita One) */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Lilita+One&display=swap');
 
 :root {
-  /* Mantendo suas cores fiéis */
   --color-green: #345E3C;
   --color-orange: #D56B2C;
   --color-blue: #1F3955;
@@ -27,21 +25,20 @@
 }
 
 .modal-content {
-  background-color: var(--color-card-bg); /* Fundo da Home */
-  border: 4px solid var(--color-card-border); /* Borda da Home */
+  background-color: var(--color-card-bg); 
+  border: 4px solid var(--color-card-border); 
   border-radius: 45px;
   padding: 40px;
   text-align: center;
   box-shadow: 0 20px 0px rgba(0, 0, 0, 0.15);
   width: 90%;
   max-width: 500px;
-  box-sizing: border-box; /* Garante que padding não estoure a largura */
+  box-sizing: border-box; 
 }
 
-/* --- TÍTULO (Onde estava o problema) --- */
 .modal-titulo-personalizado {
-  font-family: 'Lilita One', cursive; /* Fonte do título da Home */
-  font-size: 3.5rem; /* Tamanho grande para Desktop */
+  font-family: 'Lilita One', cursive; 
+  font-size: 3.5rem; 
   letter-spacing: 2px;
   line-height: 1.1;
   margin-top: 0;
@@ -50,13 +47,11 @@
   display: inline-block; /* Ajuda na renderização responsiva */
 }
 
-/* Classes de cores fiéis ao seu Home.css */
 .letter-green  { color: var(--color-green); }
 .letter-orange { color: var(--color-orange); }
 .letter-blue   { color: var(--color-blue); }
 .letter-red    { color: var(--color-red); }
 
-/* --- OUTROS ELEMENTOS --- */
 .modal-subtitulo {
   font-family: 'Fredoka', sans-serif;
   color: var(--color-blue);
@@ -88,7 +83,7 @@
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  box-shadow: 0 8px 0 var(--color-btn-shadow); /* Efeito 3D */
+  box-shadow: 0 8px 0 var(--color-btn-shadow); 
   transition: all 0.1s;
   width: 100%;
 }
@@ -98,17 +93,14 @@
   box-shadow: 0 4px 0 var(--color-btn-shadow);
 }
 
-/* =========================================
-   === AJUSTE PARA MOBILE (Telas até 480px) ===
-   ========================================= */
 @media (max-width: 480px) {
   .modal-content {
-    padding: 30px 15px; /* Reduz o padding lateral para ganhar espaço */
-    border-radius: 30px; /* Bordas um pouco menores no mobile */
+    padding: 30px 15px; 
+    border-radius: 30px; 
   }
 
   .modal-titulo-personalizado {
-    font-size: 2.2rem; /* Reduz o tamanho do título para caber no card */
+    font-size: 2.2rem; 
     margin-bottom: 15px;
     line-height: 1.2;
   }
@@ -126,9 +118,9 @@
   }
 
   .btn-modal-iniciar {
-    font-size: 1.5rem; /* Diminui um pouco o botão para não esmagar o texto */
+    font-size: 1.5rem; 
     padding: 12px 20px;
     border-radius: 15px;
-    box-shadow: 0 6px 0 var(--color-btn-shadow); /* Ajusta a sombra 3D */
+    box-shadow: 0 6px 0 var(--color-btn-shadow); 
   }
 }

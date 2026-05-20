@@ -1,4 +1,3 @@
-/* Importação das fontes do projeto */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Lilita+One&display=swap');
 
 .navbar {
@@ -6,7 +5,7 @@
   height: 70px;
   background-color: #0a3a6b;
   color: white;
-  position: fixed; /* Mantém a barra no topo ao rolar */
+  position: fixed; 
   top: 0;
   left: 0;
   z-index: 1000;
@@ -20,7 +19,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  height: 70px; /* Alinhado com a altura da navbar */
+  height: 70px; 
 }
 
 .nav-left, .nav-right {
@@ -28,40 +27,38 @@
   align-items: center;
 }
 
-/* Círculo do Perfil (Unificado e corrigido) */
 .profile-circle {
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  overflow: hidden; /* Garante que a imagem não saia do círculo */
+  overflow: hidden; 
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #D4A373; /* Cor de borda combinando com o card da Home */
+  border: 2px solid #D4A373; 
   background-color: #333;
 }
 
 .profile-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Foto sem distorção */
+  object-fit: cover; 
 }
 
 .nav-right {
   gap: 15px;
 }
 
-/* --- NOME DO JOGADOR (Fonte idêntica ao Logo) --- */
 .player-name {
-  font-family: 'Lilita One', cursive; /* Mesma fonte do Quiz Sergipe */
+  font-family: 'Lilita One', cursive; 
   font-size: 1.3rem; 
   letter-spacing: 1px;
   color: white;
   max-width: 150px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* "..." para nomes longos */
-  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2)); /* Sombra leve para destaque */
+  text-overflow: ellipsis; 
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2)); 
 }
 
 .nav-icons {
@@ -85,10 +82,9 @@
   transform: scale(1.1);
 }
 
-/* Animação para quando a música estiver tocando */
 .playing {
   animation: pulse 2s infinite;
-  color: #2ecc71; /* Verde quando ativo */
+  color: #2ecc71; 
 }
 
 @keyframes pulse {

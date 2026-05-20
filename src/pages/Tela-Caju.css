@@ -8,10 +8,6 @@
   --color-btn-shadow: #B35D10;
 }
 
-/* ==========================================================================
-   RESET & ESTRUTURA GLOBAL
-   ========================================================================== */
-
 * {
   box-sizing: border-box;
 }
@@ -21,16 +17,15 @@ body {
   overflow: hidden;
 }
 
-/* FUNDO DA PÁGINA (SINCRO COM O NOME FUNDOCAJU.JPEG) */
 .caju-page {
   width: 100vw;
   height: 100dvh;
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url('../Imagens/FundoCaju.jpeg'); /* Nome padronizado */
+  background-image: url('../Imagens/FundoCaju.jpeg');
   background-size: cover;
-  background-position: center top; /* Garante que o topo do cenário apareça */
+  background-position: center top;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
@@ -38,10 +33,6 @@ body {
   padding: 20px;
   overflow-y: auto;
 }
-
-/* ==========================================================================
-   CARD PRINCIPAL
-   ========================================================================== */
 
 .quiz-card {
   width: 92%;
@@ -55,10 +46,6 @@ body {
   position: relative;
 }
 
-/* ==========================================================================
-   TÍTULO
-   ========================================================================== */
-
 .quiz-card h1 {
   font-family: 'Lilita One', cursive;
   font-size: 3rem;
@@ -67,10 +54,6 @@ body {
   margin-bottom: 25px;
   line-height: 1.1;
 }
-
-/* ==========================================================================
-   CONTROLES SUPERIORES
-   ========================================================================== */
 
 .top-controls {
   width: 100%;
@@ -123,34 +106,21 @@ body {
   background-color: #fff7e6;
 }
 
-/* ==========================================================================
-   CONTAINER DA PERGUNTA (ALINHADO PELO TOPO PARA EVITAR CORTES)
-   ========================================================================== */
-
 .pergunta-container {
   display: flex;
-  align-items: flex-start; /* Alinhamento superior correto */
+  align-items: flex-start;
   justify-content: center;
   gap: 20px;
   margin-bottom: 30px;
   width: 100%;
 }
 
-/* ==========================================================================
-   PERSONAGEM (PERSCAJU.JPEG)
-   ========================================================================== */
-
 .personagem-caju {
   height: 150px;
   width: auto;
   object-fit: contain;
   animation: balancoSuave 3s ease-in-out infinite;
-  
 }
-
-/* ==========================================================================
-   BALÃO DA PERGUNTA
-   ========================================================================== */
 
 .quiz-card .pergunta-box {
   flex: 1;
@@ -171,16 +141,12 @@ body {
   line-height: 1.4;
 }
 
-/* ==========================================================================
-   BALÃO DE FALA DESKTOP (AJUSTADO AO TOPO)
-   ========================================================================== */
-
 @media (min-width: 769px) {
   .quiz-card .pergunta-box::before {
     content: '';
     position: absolute;
     left: -15px;
-    top: 35px; /* Seta ajustada para acompanhar o topo */
+    top: 35px;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
     border-right: 15px solid #fffaf0;
@@ -191,17 +157,13 @@ body {
     content: '';
     position: absolute;
     left: -19px;
-    top: 35px; /* Seta ajustada para acompanhar o topo */
+    top: 35px;
     border-top: 17px solid transparent;
     border-bottom: 17px solid transparent;
     border-right: 17px solid #e6c7a1;
     z-index: 1;
   }
 }
-
-/* ==========================================================================
-   ALTERNATIVAS
-   ========================================================================== */
 
 .alternativas-container {
   display: grid;
@@ -221,25 +183,21 @@ body {
   transition: all 0.15s ease;
 }
 
-/* VERDE */
 .alternativas-container .alternativa-btn:nth-child(1) {
   background-color: #2ecc71;
   box-shadow: 0 6px 0 #27ae60;
 }
 
-/* AZUL */
 .alternativas-container .alternativa-btn:nth-child(2) {
   background-color: #3498db;
   box-shadow: 0 6px 0 #2980b9;
 }
 
-/* AMARELO */
 .alternativas-container .alternativa-btn:nth-child(3) {
   background-color: #f1c40f;
   box-shadow: 0 6px 0 #d4ac0d;
 }
 
-/* VERMELHO */
 .alternativas-container .alternativa-btn:nth-child(4) {
   background-color: #e74c3c;
   box-shadow: 0 6px 0 #c0392b;
@@ -253,10 +211,6 @@ body {
 .alternativa-btn:active {
   transform: translateY(3px);
 }
-
-/* ==========================================================================
-   BOTÃO VOLTAR
-   ========================================================================== */
 
 .btn-voltar-topo {
   position: absolute;
@@ -286,10 +240,6 @@ body {
   transform: translateY(3px);
   box-shadow: 0 2px 0 var(--color-btn-shadow);
 }
-
-/* ==========================================================================
-   MODAL DE PAUSA CORRIGIDO (BOTÕES SEMPRE LARANJAS)
-   ========================================================================== */
 
 .modal-overlay {
   position: fixed;
@@ -345,7 +295,6 @@ body {
   filter: brightness(1.05);
 }
 
-/* Garante que Continuar, Reiniciar e Home usem as variáveis laranjas */
 .modal-btn.continuar,
 .modal-btn.reiniciar,
 .modal-btn.home {
@@ -358,10 +307,6 @@ body {
   box-shadow: 0 3px 0 var(--color-btn-shadow) !important;
 }
 
-/* ==========================================================================
-   RESPOSTAS
-   ========================================================================== */
-
 .correta {
   background-color: #2ecc71 !important;
   box-shadow: 0 6px 0 #27ae60 !important;
@@ -373,10 +318,6 @@ body {
   box-shadow: 0 6px 0 #c0392b !important;
   animation: shakeErro 0.3s ease;
 }
-
-/* ==========================================================================
-   ANIMAÇÕES
-   ========================================================================== */
 
 @keyframes pulseCorreta {
   0% { transform: scale(1); }
@@ -396,10 +337,6 @@ body {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-6px) rotate(2deg); }
 }
-
-/* ==========================================================================
-   RESPONSIVO (MOBILE)
-   ========================================================================== */
 
 @media (max-width: 768px) {
   .caju-page {

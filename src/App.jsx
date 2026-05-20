@@ -23,7 +23,6 @@ function MainContent({ isMuted, toggleMusic, playerName }) {
 
   return (
     <>
-      {/* Passamos o nome do jogador para a Navbar exibir no topo */}
       {mostrarNavbar && (
         <Navbar
           playerName={playerName}
@@ -54,12 +53,10 @@ function App() {
   const [isMuted, setIsMuted] = useState(true);
   const [playerName, setPlayerName] = useState("Jogador");
   
-  // Definimos como TRUE para o modal aparecer sempre no início
   const [mostrarModal, setMostrarModal] = useState(true);
 
   const audioRef = useRef(new Audio(temaJogo));
 
-  // Função chamada quando o usuário clica em "Começar Desafio" no Modal
   const handleConfirmarNome = (nome) => {
     setPlayerName(nome);
     setMostrarModal(false); // Fecha o modal
@@ -80,7 +77,6 @@ function App() {
 
   return (
     <>
-      {/* O Modal precisa estar aqui para ser renderizado */}
       {mostrarModal && (
         <ModalNome aoConfirmar={handleConfirmarNome} />
       )}

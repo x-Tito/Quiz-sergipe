@@ -8,10 +8,6 @@
   --color-btn-shadow: #B35D10;
 }
 
-/* ==========================================================================
-   RESET & ESTRUTURA GLOBAL
-   ========================================================================== */
-
 * {
   box-sizing: border-box;
 }
@@ -21,14 +17,13 @@ body {
   overflow: hidden;
 }
 
-/* FUNDO DA PÁGINA CORRIGIDO (PRAIA/MANGUE DO CARANGUEJO) */
 .caranguejo-page {
   width: 100vw;
   height: 100dvh;
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url('../Imagens/FundoCaranguejo.jpeg'); /* CORREÇÃO DO FUNDO */
+  background-image: url('../Imagens/FundoCaranguejo.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -38,10 +33,6 @@ body {
   padding: 20px;
   overflow-y: auto;
 }
-
-/* ==========================================================================
-   CARD PRINCIPAL
-   ========================================================================== */
 
 .quiz-card {
   width: 92%;
@@ -55,10 +46,6 @@ body {
   position: relative;
 }
 
-/* ==========================================================================
-   TÍTULO
-   ========================================================================== */
-
 .quiz-card h1 {
   font-family: 'Lilita One', cursive;
   font-size: 3rem;
@@ -67,10 +54,6 @@ body {
   margin-bottom: 25px;
   line-height: 1.1;
 }
-
-/* ==========================================================================
-   CONTROLES SUPERIORES (TIMER E SOM)
-   ========================================================================== */
 
 .top-controls {
   width: 100%;
@@ -123,10 +106,6 @@ body {
   background-color: #fff7e6;
 }
 
-/* ==========================================================================
-   CONTAINER DA PERGUNTA E DO BONECO
-   ========================================================================== */
-
 .pergunta-container {
   display: flex;
   align-items: center;
@@ -162,7 +141,6 @@ body {
   line-height: 1.4;
 }
 
-/* BALÃO DE FALA DESKTOP */
 @media (min-width: 769px) {
   .quiz-card .pergunta-box::before {
     content: '';
@@ -189,10 +167,6 @@ body {
   }
 }
 
-/* ==========================================================================
-   BOTÕES DE ALTERNATIVAS COLORIDAS DO JOGO
-   ========================================================================== */
-
 .alternativas-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -211,25 +185,21 @@ body {
   transition: all 0.15s ease;
 }
 
-/* VERDE */
 .alternativas-container .alternativa-btn:nth-child(1) {
   background-color: #2ecc71;
   box-shadow: 0 6px 0 #27ae60;
 }
 
-/* AZUL */
 .alternativas-container .alternativa-btn:nth-child(2) {
   background-color: #3498db;
   box-shadow: 0 6px 0 #2980b9;
 }
 
-/* AMARELO */
 .alternativas-container .alternativa-btn:nth-child(3) {
   background-color: #f1c40f;
   box-shadow: 0 6px 0 #d4ac0d;
 }
 
-/* VERMELHO */
 .alternativas-container .alternativa-btn:nth-child(4) {
   background-color: #e74c3c;
   box-shadow: 0 6px 0 #c0392b;
@@ -243,10 +213,6 @@ body {
 .alternativa-btn:active {
   transform: translateY(3px);
 }
-
-/* ==========================================================================
-   BOTÃO VOLTAR (TOPO DA TELA)
-   ========================================================================== */
 
 .btn-voltar-topo {
   position: absolute;
@@ -276,10 +242,6 @@ body {
   transform: translateY(3px);
   box-shadow: 0 2px 0 var(--color-btn-shadow);
 }
-
-/* ==========================================================================
-   MODAL DE PAUSA (BOTÕES LARANJAS)
-   ========================================================================== */
 
 .modal-overlay {
   position: fixed;
@@ -330,7 +292,6 @@ body {
   transition: 0.15s;
 }
 
-/* ADICIONADO: Todos os botões do modal de pausa agora usam as cores laranjas do jogo */
 .modal-btn.continuar,
 .modal-btn.reiniciar,
 .modal-btn.home {
@@ -348,10 +309,6 @@ body {
   box-shadow: 0 3px 0 var(--color-btn-shadow) !important;
 }
 
-/* ==========================================================================
-   FEEDBACKS DE RESPOSTAS DO QUIZ
-   ========================================================================== */
-
 .correta {
   background-color: #7fffd4 !important;
   box-shadow: 0 5px 0 #57d9b5 !important;
@@ -361,10 +318,6 @@ body {
   background-color: #ff8a8a !important;
   box-shadow: 0 5px 0 #e96b6b !important;
 }
-
-/* ==========================================================================
-   ANIMAÇÕES DO SISTEMA
-   ========================================================================== */
 
 @keyframes pulseCorreta {
   0% { transform: scale(1); }
@@ -385,14 +338,10 @@ body {
   50% { transform: translateY(-6px) rotate(2deg); }
 }
 
-/* ==========================================================================
-   RESPONSIVIDADE (MOBILE / TELAS PEQUENAS)
-   ========================================================================== */
-
 @media (max-width: 768px) {
   .caranguejo-page {
     align-items: flex-start;
-    padding: 75px 10px 20px 10px; /* Margem para o botão voltar fixo */
+    padding: 75px 10px 20px 10px;
   }
 
   .quiz-card {
@@ -413,7 +362,7 @@ body {
   }
 
   .personagem-caranguejo {
-    height: 85px; /* Tamanho ajustado para o mobile */
+    height: 85px;
   }
 
   .quiz-card .pergunta-box {

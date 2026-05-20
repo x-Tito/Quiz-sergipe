@@ -22,8 +22,6 @@ function Home() {
           <span className="letter-orange">p</span>
           <span className="letter-blue">e</span>
         </h1>
-
-        {/* Container para forçar a centralização e largura do botão */}
         <div className="btn-iniciar-container">
           <button 
             className="btn-iniciar"

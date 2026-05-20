@@ -8,10 +8,6 @@
   --color-btn-shadow: #B35D10;
 }
 
-/* ==========================================================================
-   RESET GLOBAL
-   ========================================================================== */
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -26,106 +22,61 @@ body,
   overflow: hidden;
 }
 
-/* ==========================================================================
-   FUNDO DA PÁGINA
-   ========================================================================== */
-
 .cordel-page {
   width: 100vw;
   height: 100dvh;
-
   position: fixed;
-
   top: 0;
   left: 0;
-
   background-image: url('../Imagens/FundoCordel.jpeg');
-
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 20px;
-
   overflow: hidden;
 }
-
-/* ==========================================================================
-   CARD PRINCIPAL
-   ========================================================================== */
 
 .quiz-card {
   width: 92%;
   max-width: 850px;
-
   background-color: var(--color-card-bg);
-
   border: 4px solid var(--color-card-border);
-
   border-radius: 40px;
-
   padding: 35px 30px;
-
   text-align: center;
-
   box-shadow: 0 15px 0 rgba(0, 0, 0, 0.12);
-
   position: relative;
 }
 
-/* ==========================================================================
-   TÍTULO
-   ========================================================================== */
-
 .quiz-card h1 {
   font-family: 'Lilita One', cursive;
-
   font-size: 3rem;
-
   color: var(--color-blue-dark);
-
   margin-bottom: 25px;
-
   line-height: 1.1;
 }
 
-/* ==========================================================================
-   CONTROLES SUPERIORES
-   ========================================================================== */
-
 .top-controls {
   width: 100%;
-
   display: flex;
-
   justify-content: flex-end;
   align-items: center;
-
   gap: 10px;
-
   margin-bottom: 20px;
 }
 
 .timer-box {
   background-color: var(--color-orange);
-
   color: white;
-
   padding: 10px 18px;
-
   border-radius: 16px;
-
   font-family: 'Fredoka', sans-serif;
-
   font-size: 1rem;
   font-weight: bold;
-
   box-shadow: 0 5px 0 var(--color-btn-shadow);
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,22 +85,15 @@ body,
 .sound-btn {
   width: 48px;
   height: 48px;
-
   border: none;
   border-radius: 16px;
-
   background-color: var(--color-orange);
-
   color: white;
-
   cursor: pointer;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   box-shadow: 0 5px 0 var(--color-btn-shadow);
-
   transition: 0.15s;
 }
 
@@ -159,7 +103,6 @@ body,
 
 .sound-btn:active {
   transform: translateY(3px);
-
   box-shadow: 0 2px 0 var(--color-btn-shadow);
 }
 
@@ -167,140 +110,83 @@ body,
   background-color: #fff7e6;
 }
 
-/* ==========================================================================
-   PERGUNTA + PERSONAGEM
-   ========================================================================== */
-
 .pergunta-container {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   gap: 25px;
-
   margin-bottom: 30px;
-
   width: 100%;
 }
-
-/* ==========================================================================
-   PERSONAGEM
-   ========================================================================== */
 
 .personagem-cordel {
   width: 32%;
   max-width: 280px;
-
   height: auto;
-
   object-fit: contain;
-
   animation: balancoSuave 3s ease-in-out infinite;
 }
 
-/* ==========================================================================
-   BALÃO DA PERGUNTA
-   ========================================================================== */
-
 .quiz-card .pergunta-box {
   flex: 1;
-
   background-color: #fffaf0;
-
   border: 3px solid #e6c7a1;
-
   border-radius: 28px;
-
   padding: 40px 25px;
-
   box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
-
   position: relative;
 }
 
 .pergunta-box h2 {
   font-family: 'Fredoka', sans-serif;
-
   font-size: 1.8rem;
-
   color: var(--color-blue-dark);
-
   line-height: 1.4;
 }
-
-/* ==========================================================================
-   BALÃO DESKTOP
-   ========================================================================== */
 
 @media (min-width: 769px) {
 
   .quiz-card .pergunta-box::before {
     content: '';
-
     position: absolute;
-
     left: -15px;
     top: 50%;
-
     transform: translateY(-50%);
-
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-
     border-right: 15px solid #fffaf0;
-
     z-index: 2;
   }
 
   .quiz-card .pergunta-box::after {
     content: '';
-
     position: absolute;
-
     left: -19px;
     top: 50%;
-
     transform: translateY(-50%);
-
     border-top: 17px solid transparent;
     border-bottom: 17px solid transparent;
-
     border-right: 17px solid #e6c7a1;
-
     z-index: 1;
   }
 
 }
 
-/* ==========================================================================
-   ALTERNATIVAS
-   ========================================================================== */
-
 .alternativas-container {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 18px;
 }
 
 .alternativa-btn {
   font-family: 'Fredoka', sans-serif;
-
   color: white;
-
   border: none;
-
   border-radius: 20px;
-
   padding: 18px;
-
   font-size: 1.2rem;
   font-weight: bold;
-
   cursor: pointer;
-
   transition: all 0.15s ease;
 }
 
@@ -326,7 +212,6 @@ body,
 
 .alternativa-btn:hover {
   transform: scale(1.03);
-
   filter: brightness(1.05);
 }
 
@@ -334,37 +219,21 @@ body,
   transform: translateY(3px);
 }
 
-/* ==========================================================================
-   BOTÃO VOLTAR
-   ========================================================================== */
-
 .btn-voltar-topo {
   position: absolute;
-
   top: 25px;
   left: 25px;
-
   font-family: 'Fredoka', sans-serif;
-
   background-color: var(--color-orange);
-
   color: white;
-
   border: none;
-
   border-radius: 16px;
-
   padding: 10px 18px;
-
   font-size: 1rem;
   font-weight: bold;
-
   box-shadow: 0 5px 0 var(--color-btn-shadow);
-
   cursor: pointer;
-
   z-index: 10;
-
   transition: 0.15s;
 }
 
@@ -372,79 +241,52 @@ body,
   transform: scale(1.05);
 }
 
-/* ==========================================================================
-   MODAL
-   ========================================================================== */
-
 .modal-overlay {
   position: fixed;
-
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
-
   background-color: rgba(0, 0, 0, 0.45);
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   z-index: 999;
 }
 
 .modal-pausa {
   width: 90%;
   max-width: 420px;
-
   background-color: var(--color-card-bg);
-
   border: 4px solid var(--color-card-border);
-
   border-radius: 35px;
-
   padding: 35px 25px;
-
   text-align: center;
-
   box-shadow: 0 15px 0 rgba(0,0,0,0.15);
 }
 
 .modal-pausa h2 {
   font-family: 'Lilita One', cursive;
-
   color: var(--color-blue-dark);
-
   font-size: 2rem;
-
   margin-bottom: 25px;
 }
 
 .modal-botoes {
   display: flex;
-
   flex-direction: column;
-
   gap: 15px;
 }
 
 .modal-btn {
   font-family: 'Fredoka', sans-serif;
-
   border: none;
-
   border-radius: 18px;
-
   padding: 15px;
-
   font-size: 1.1rem;
   font-weight: bold;
-
   color: white;
-
   cursor: pointer;
-
   transition: 0.15s;
 }
 
@@ -456,13 +298,8 @@ body,
 .reiniciar,
 .home {
   background-color: var(--color-orange);
-
   box-shadow: 0 6px 0 var(--color-btn-shadow);
 }
-
-/* ==========================================================================
-   FEEDBACK RESPOSTAS
-   ========================================================================== */
 
 .correta {
   background-color: #7fffd4 !important;
@@ -473,9 +310,6 @@ body,
   background-color: #ff8a8a !important;
   box-shadow: 0 5px 0 #e96b6b !important;
 }
-/* ==========================================================================
-   ANIMAÇÃO
-   ========================================================================== */
 
 @keyframes balancoSuave {
 
@@ -489,53 +323,39 @@ body,
 
 }
 
-/* ==========================================================================
-   RESPONSIVO
-   ========================================================================== */
-
 @media (max-width: 768px) {
 
   .cordel-page {
     align-items: flex-start;
-
     padding: 75px 10px 20px;
   }
 
   .quiz-card {
     width: 100%;
-
     padding: 20px 15px;
-
     border-radius: 25px;
   }
 
   .quiz-card h1 {
     font-size: 1.8rem;
-
     margin-bottom: 15px;
   }
 
   .pergunta-container {
     flex-direction: column;
-
     align-items: center;
-
     gap: 10px;
-
     margin-bottom: 15px;
   }
 
   .personagem-cordel {
     width: auto;
-
     height: 120px;
   }
 
   .quiz-card .pergunta-box {
     width: 100%;
-
     padding: 15px 12px;
-
     border-radius: 18px;
   }
 
@@ -545,49 +365,38 @@ body,
 
   .alternativas-container {
     grid-template-columns: 1fr;
-
     gap: 10px;
   }
 
   .alternativa-btn {
     font-size: 1rem;
-
     padding: 14px;
   }
 
   .btn-voltar-topo {
     top: 15px;
     left: 15px;
-
     padding: 6px 12px;
-
     font-size: 0.85rem;
-
     border-radius: 12px;
   }
 
   .top-controls {
     margin-bottom: 10px;
-
     gap: 8px;
   }
 
   .timer-box {
     padding: 6px 12px;
-
     font-size: 0.9rem;
-
     border-radius: 10px;
-
     box-shadow: 0 3px 0 var(--color-btn-shadow);
   }
 
   .sound-btn {
     width: 38px;
     height: 38px;
-
     border-radius: 10px;
-
     box-shadow: 0 3px 0 var(--color-btn-shadow);
   }
 

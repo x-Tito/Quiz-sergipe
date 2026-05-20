@@ -8,7 +8,6 @@
   --color-btn-shadow: #B35D10;
 }
 
-/* Reset básico para garantir que o cálculo de largura funcione */
 * {
   box-sizing: border-box;
 }
@@ -24,16 +23,14 @@
   background-position: center;
   background-repeat: no-repeat;
   
-  /* Centralização Total */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Margem de segurança externa */
+  padding: 20px; 
 }
 
 /* --- CARD CENTRAL --- */
 .card-fases {
-  /* O segredo para não encostar: width em % com um max-width fixo */
   width: 92%; 
   max-width: 420px;
   
@@ -47,7 +44,6 @@
   flex-direction: column;
   gap: 15px;
   
-  /* Garante que o card não suba demais ou desça demais */
   margin: auto; 
 }
 
@@ -121,12 +117,10 @@
 /* --- RESPONSIVIDADE MOBILE --- */
 @media (max-width: 480px) {
   .container-fases {
-    /* Aumentamos levemente o padding no mobile para garantir o afastamento das bordas */
     padding: 15px; 
   }
 
   .card-fases {
-    /* No mobile, garantimos que ele ocupe 90% da largura, deixando 5% de margem de cada lado */
     width: 90%; 
     padding: 30px 15px;
     border-radius: 35px;
