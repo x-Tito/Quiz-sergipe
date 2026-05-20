@@ -275,7 +275,7 @@ function QuizPhase({
 
         {carregando && (
           <div className="pergunta-box" style={{ marginBottom: "20px" }}>
-            <h2>Carregando perguntas da API...</h2>
+            <h2>Carregando...</h2>
           </div>
         )}
 
