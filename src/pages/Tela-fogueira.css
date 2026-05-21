@@ -34,10 +34,11 @@ body {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.quiz-card {
+.fogueira-page .quiz-card {
   width: 92%;
   max-width: 820px;
   max-height: 95dvh;
@@ -55,7 +56,7 @@ body {
   justify-content: center;
 }
 
-.quiz-card h1 {
+.fogueira-page .quiz-card h1 {
   font-family: 'Lilita One', cursive;
   font-size: 2.5rem;
   color: var(--color-blue-dark);
@@ -64,7 +65,7 @@ body {
   line-height: 1.1;
 }
 
-.btn-voltar-topo {
+.fogueira-page .btn-voltar-topo {
   position: fixed;
   top: 20px;
   left: 20px;
@@ -87,17 +88,17 @@ body {
   white-space: nowrap;
 }
 
-.btn-voltar-topo:hover {
+.fogueira-page .btn-voltar-topo:hover {
   transform: scale(1.05);
   filter: brightness(1.05);
 }
 
-.btn-voltar-topo:active {
+.fogueira-page .btn-voltar-topo:active {
   transform: translateY(3px);
   box-shadow: 0 2px 0 var(--color-btn-shadow);
 }
 
-.top-controls {
+.fogueira-page .top-controls {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -106,7 +107,7 @@ body {
   margin-bottom: 12px;
 }
 
-.timer-box {
+.fogueira-page .timer-box {
   background-color: var(--color-orange);
   color: white;
   padding: 8px 16px;
@@ -120,7 +121,7 @@ body {
   justify-content: center;
 }
 
-.sound-btn {
+.fogueira-page .sound-btn {
   width: 42px;
   height: 42px;
   border: none;
@@ -135,20 +136,20 @@ body {
   transition: 0.15s;
 }
 
-.sound-btn:hover {
+.fogueira-page .sound-btn:hover {
   transform: scale(1.05);
 }
 
-.sound-btn:active {
+.fogueira-page .sound-btn:active {
   transform: translateY(2px);
   box-shadow: 0 2px 0 var(--color-btn-shadow);
 }
 
-.sound-btn.playing {
+.fogueira-page .sound-btn.playing {
   background-color: #fff7e6;
 }
 
-.pergunta-container {
+.fogueira-page .pergunta-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,7 +158,7 @@ body {
   width: 100%;
 }
 
-.personagem-fogueira {
+.fogueira-page .personagem-fogueira {
   width: auto;
   height: 135px;
   max-width: 170px;
@@ -177,7 +178,7 @@ body {
   position: relative;
 }
 
-.pergunta-box h2 {
+.fogueira-page .pergunta-box h2 {
   font-family: 'Fredoka', sans-serif;
   font-size: 1.5rem;
   color: var(--color-blue-dark);
@@ -211,13 +212,13 @@ body {
   }
 }
 
-.alternativas-container {
+.fogueira-page .alternativas-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
-.alternativa-btn {
+.fogueira-page .alternativa-btn {
   font-family: 'Fredoka', sans-serif;
   color: white;
   border: none;
@@ -229,46 +230,91 @@ body {
   transition: all 0.15s ease;
 }
 
-.alternativas-container .alternativa-btn:nth-child(1) {
+.fogueira-page .alternativas-container .alternativa-btn:nth-child(1) {
   background-color: #2ecc71;
   box-shadow: 0 5px 0 #27ae60;
 }
 
-.alternativas-container .alternativa-btn:nth-child(2) {
+.fogueira-page .alternativas-container .alternativa-btn:nth-child(2) {
   background-color: #3498db;
   box-shadow: 0 5px 0 #2980b9;
 }
 
-.alternativas-container .alternativa-btn:nth-child(3) {
+.fogueira-page .alternativas-container .alternativa-btn:nth-child(3) {
   background-color: #f1c40f;
   box-shadow: 0 5px 0 #d4ac0d;
 }
 
-.alternativas-container .alternativa-btn:nth-child(4) {
+.fogueira-page .alternativas-container .alternativa-btn:nth-child(4) {
   background-color: #e74c3c;
   box-shadow: 0 5px 0 #c0392b;
 }
 
-.alternativa-btn:hover {
+.fogueira-page .alternativa-btn:hover {
   transform: scale(1.02);
   filter: brightness(1.05);
 }
 
-.alternativa-btn:active {
+.fogueira-page .alternativa-btn:active {
   transform: translateY(2px);
 }
 
-.correta {
-  background-color: #7fffd4 !important;
-  box-shadow: 0 5px 0 #57d9b5 !important;
+.fogueira-page .correta {
+  background: linear-gradient(180deg, #39c96f 0%, #1f9d55 100%) !important;
+  box-shadow: 0 5px 0 #157a40, 0 0 0 4px rgba(218, 255, 230, 0.9) !important;
+  color: #ffffff !important;
+  border: 3px solid #f2fff7 !important;
+  transform: scale(1.02);
 }
 
-.errada {
-  background-color: #ff8a8a !important;
-  box-shadow: 0 5px 0 #e96b6b !important;
+.fogueira-page .errada {
+  background: linear-gradient(180deg, #ef5f5f 0%, #d64545 100%) !important;
+  box-shadow: 0 5px 0 #a52b2b, 0 0 0 4px rgba(255, 225, 225, 0.9) !important;
+  color: #ffffff !important;
+  border: 3px solid #ffd6d6 !important;
 }
 
-.modal-overlay {
+.fogueira-page .reveal-correta {
+  background: linear-gradient(180deg, #54d985 0%, #35b56a 100%) !important;
+  box-shadow: 0 5px 0 #24894d, 0 0 0 4px rgba(245, 255, 184, 0.9) !important;
+  color: #ffffff !important;
+  border: 3px dashed #f5ffb8 !important;
+}
+
+@media (max-width: 1024px) {
+  .fogueira-page {
+    padding: 72px 12px 16px;
+    align-items: flex-start;
+  }
+
+  .quiz-card {
+    max-height: none;
+    padding: 18px 16px 20px;
+  }
+
+  .quiz-card h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .top-controls {
+    margin-bottom: 10px;
+  }
+
+  .personagem-fogueira {
+    height: 112px;
+  }
+
+  .quiz-card .pergunta-box {
+    padding: 18px 16px;
+  }
+
+  .pergunta-box h2 {
+    font-size: 1.25rem;
+  }
+}
+
+.fogueira-page .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -281,7 +327,7 @@ body {
   z-index: 999;
 }
 
-.modal-pausa {
+.fogueira-page .modal-pausa {
   width: 90%;
   max-width: 420px;
   background-color: var(--color-card-bg);
@@ -292,20 +338,20 @@ body {
   box-shadow: 0 15px 0 rgba(0,0,0,0.15);
 }
 
-.modal-pausa h2 {
+.fogueira-page .modal-pausa h2 {
   font-family: 'Lilita One', cursive;
   color: var(--color-blue-dark);
   font-size: 2rem;
   margin-bottom: 25px;
 }
 
-.modal-botoes {
+.fogueira-page .modal-botoes {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.modal-btn {
+.fogueira-page .modal-btn {
   font-family: 'Fredoka', sans-serif;
   border: none;
   border-radius: 18px;
@@ -316,9 +362,9 @@ body {
   cursor: pointer;
 }
 
-.continuar,
-.reiniciar,
-.home {
+.fogueira-page .continuar,
+.fogueira-page .reiniciar,
+.fogueira-page .home {
   background-color: var(--color-orange);
   box-shadow: 0 6px 0 var(--color-btn-shadow);
 }
@@ -327,6 +373,7 @@ body {
   .fogueira-page {
     padding: 70px 10px 15px;
     align-items: flex-start;
+    overflow-y: auto;
   }
 
   .quiz-card {

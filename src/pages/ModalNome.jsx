@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './ModalNome.css';
+import React, { useState } from "react";
+import "./ModalNome.css";
 
 function ModalNome({ aoConfirmar }) {
-  const [nome, setNome] = useState('');
+  const [nome, setNome] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,14 +27,14 @@ function ModalNome({ aoConfirmar }) {
           <span className="letter-orange">p</span>
           <span className="letter-blue">e</span>
         </h2>
-        
+
         <p className="modal-subtitulo">Como devemos te chamar?</p>
-        
+
         <form onSubmit={handleSubmit}>
-          <input 
-            type="text" 
+          <input
+            type="text"
             className="modal-input"
-            placeholder="Digite seu nome..." 
+            placeholder="Digite seu nome..."
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             autoFocus

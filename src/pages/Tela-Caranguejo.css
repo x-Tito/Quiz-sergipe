@@ -32,9 +32,10 @@ body {
   align-items: center;
   padding: 20px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.quiz-card {
+.caranguejo-page .quiz-card {
   width: 92%;
   max-width: 850px;
   background-color: var(--color-card-bg);
@@ -46,7 +47,7 @@ body {
   position: relative;
 }
 
-.quiz-card h1 {
+.caranguejo-page .quiz-card h1 {
   font-family: 'Lilita One', cursive;
   font-size: 3rem;
   color: var(--color-blue-dark);
@@ -55,7 +56,7 @@ body {
   line-height: 1.1;
 }
 
-.top-controls {
+.caranguejo-page .top-controls {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -64,7 +65,7 @@ body {
   margin-bottom: 20px;
 }
 
-.timer-box {
+.caranguejo-page .timer-box {
   background-color: var(--color-orange);
   color: white;
   padding: 10px 18px;
@@ -78,7 +79,7 @@ body {
   justify-content: center;
 }
 
-.sound-btn {
+.caranguejo-page .sound-btn {
   width: 48px;
   height: 48px;
   border: none;
@@ -93,20 +94,20 @@ body {
   transition: 0.15s;
 }
 
-.sound-btn:hover {
+.caranguejo-page .sound-btn:hover {
   transform: scale(1.05);
 }
 
-.sound-btn:active {
+.caranguejo-page .sound-btn:active {
   transform: translateY(3px);
   box-shadow: 0 2px 0 var(--color-btn-shadow);
 }
 
-.sound-btn.playing {
+.caranguejo-page .sound-btn.playing {
   background-color: #fff7e6;
 }
 
-.pergunta-container {
+.caranguejo-page .pergunta-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +116,7 @@ body {
   width: 100%;
 }
 
-.personagem-caranguejo {
+.caranguejo-page .personagem-caranguejo {
   height: 150px;
   width: auto;
   object-fit: contain;
@@ -133,7 +134,7 @@ body {
   position: relative;
 }
 
-.pergunta-box h2 {
+.caranguejo-page .pergunta-box h2 {
   font-family: 'Fredoka', sans-serif;
   font-size: 2rem;
   color: var(--color-blue-dark);
@@ -167,13 +168,13 @@ body {
   }
 }
 
-.alternativas-container {
+.caranguejo-page .alternativas-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
 }
 
-.alternativa-btn {
+.caranguejo-page .alternativa-btn {
   font-family: 'Fredoka', sans-serif;
   color: white;
   border: none;
@@ -185,36 +186,36 @@ body {
   transition: all 0.15s ease;
 }
 
-.alternativas-container .alternativa-btn:nth-child(1) {
+.caranguejo-page .alternativas-container .alternativa-btn:nth-child(1) {
   background-color: #2ecc71;
   box-shadow: 0 6px 0 #27ae60;
 }
 
-.alternativas-container .alternativa-btn:nth-child(2) {
+.caranguejo-page .alternativas-container .alternativa-btn:nth-child(2) {
   background-color: #3498db;
   box-shadow: 0 6px 0 #2980b9;
 }
 
-.alternativas-container .alternativa-btn:nth-child(3) {
+.caranguejo-page .alternativas-container .alternativa-btn:nth-child(3) {
   background-color: #f1c40f;
   box-shadow: 0 6px 0 #d4ac0d;
 }
 
-.alternativas-container .alternativa-btn:nth-child(4) {
+.caranguejo-page .alternativas-container .alternativa-btn:nth-child(4) {
   background-color: #e74c3c;
   box-shadow: 0 6px 0 #c0392b;
 }
 
-.alternativa-btn:hover {
+.caranguejo-page .alternativa-btn:hover {
   transform: scale(1.03);
   filter: brightness(1.05);
 }
 
-.alternativa-btn:active {
+.caranguejo-page .alternativa-btn:active {
   transform: translateY(3px);
 }
 
-.btn-voltar-topo {
+.caranguejo-page .btn-voltar-topo {
   position: absolute;
   top: 25px;
   left: 25px;
@@ -233,17 +234,17 @@ body {
   transition: all 0.15s ease;
 }
 
-.btn-voltar-topo:hover {
+.caranguejo-page .btn-voltar-topo:hover {
   transform: scale(1.05);
   filter: brightness(1.05);
 }
 
-.btn-voltar-topo:active {
+.caranguejo-page .btn-voltar-topo:active {
   transform: translateY(3px);
   box-shadow: 0 2px 0 var(--color-btn-shadow);
 }
 
-.modal-overlay {
+.caranguejo-page .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -256,7 +257,7 @@ body {
   z-index: 999;
 }
 
-.modal-pausa {
+.caranguejo-page .modal-pausa {
   width: 90%;
   max-width: 420px;
   background-color: var(--color-card-bg);
@@ -267,20 +268,20 @@ body {
   box-shadow: 0 15px 0 rgba(0,0,0,0.15);
 }
 
-.modal-pausa h2 {
+.caranguejo-page .modal-pausa h2 {
   font-family: 'Lilita One', cursive;
   color: var(--color-blue-dark);
   font-size: 2rem;
   margin-bottom: 25px;
 }
 
-.modal-botoes {
+.caranguejo-page .modal-botoes {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.modal-btn {
+.caranguejo-page .modal-btn {
   font-family: 'Fredoka', sans-serif;
   border: none;
   border-radius: 18px;
@@ -292,31 +293,77 @@ body {
   transition: 0.15s;
 }
 
-.modal-btn.continuar,
-.modal-btn.reiniciar,
-.modal-btn.home {
+.caranguejo-page .modal-btn.continuar,
+.caranguejo-page .modal-btn.reiniciar,
+.caranguejo-page .modal-btn.home {
   background-color: var(--color-orange) !important;
   box-shadow: 0 6px 0 var(--color-btn-shadow) !important;
 }
 
-.modal-btn:hover {
+.caranguejo-page .modal-btn:hover {
   transform: scale(1.03);
   filter: brightness(1.05);
 }
 
-.modal-btn:active {
+.caranguejo-page .modal-btn:active {
   transform: translateY(3px);
   box-shadow: 0 3px 0 var(--color-btn-shadow) !important;
 }
 
-.correta {
-  background-color: #7fffd4 !important;
-  box-shadow: 0 5px 0 #57d9b5 !important;
+.caranguejo-page .correta {
+  background: linear-gradient(180deg, #39c96f 0%, #1f9d55 100%) !important;
+  box-shadow: 0 5px 0 #157a40, 0 0 0 4px rgba(218, 255, 230, 0.9) !important;
+  color: #ffffff !important;
+  border: 3px solid #f2fff7 !important;
+  transform: scale(1.02);
 }
 
-.errada {
-  background-color: #ff8a8a !important;
-  box-shadow: 0 5px 0 #e96b6b !important;
+.caranguejo-page .errada {
+  background: linear-gradient(180deg, #ef5f5f 0%, #d64545 100%) !important;
+  box-shadow: 0 5px 0 #a52b2b, 0 0 0 4px rgba(255, 225, 225, 0.9) !important;
+  color: #ffffff !important;
+  border: 3px solid #ffd6d6 !important;
+}
+
+.caranguejo-page .reveal-correta {
+  background: linear-gradient(180deg, #54d985 0%, #35b56a 100%) !important;
+  box-shadow: 0 5px 0 #24894d, 0 0 0 4px rgba(245, 255, 184, 0.9) !important;
+  color: #ffffff !important;
+  border: 3px dashed #f5ffb8 !important;
+}
+
+@media (max-width: 1024px) {
+  .caranguejo-page {
+    align-items: flex-start;
+    padding: 72px 12px 18px;
+    overflow-y: auto;
+  }
+
+  .quiz-card {
+    width: 100%;
+    padding: 24px 18px;
+  }
+
+  .quiz-card h1 {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+  }
+
+  .top-controls {
+    margin-bottom: 12px;
+  }
+
+  .personagem-caranguejo {
+    height: 124px;
+  }
+
+  .quiz-card .pergunta-box {
+    padding: 26px 18px;
+  }
+
+  .pergunta-box h2 {
+    font-size: 1.5rem;
+  }
 }
 
 @keyframes pulseCorreta {
@@ -342,6 +389,7 @@ body {
   .caranguejo-page {
     align-items: flex-start;
     padding: 75px 10px 20px 10px;
+    overflow-y: auto;
   }
 
   .quiz-card {

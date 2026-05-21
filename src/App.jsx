@@ -17,6 +17,8 @@ import ModalNome from "./pages/ModalNome";
 // Áudio do Jogo
 import temaJogo from "./assets/Audio/tema-jogo.mp3.mp3";
 
+const PLAYER_NAME_STORAGE_KEY = "quiz-sergipe-player-name";
+
 function MainContent({ isMuted, toggleMusic, playerName }) {
   const location = useLocation();
   const mostrarNavbar = location.pathname === "/";
@@ -50,15 +52,22 @@ function MainContent({ isMuted, toggleMusic, playerName }) {
 }
 
 function App() {
+  const nomeSalvo =
+    typeof window !== "undefined"
+      ? window.localStorage.getItem(PLAYER_NAME_STORAGE_KEY)?.trim()
+      : "";
+
   const [isMuted, setIsMuted] = useState(true);
-  const [playerName, setPlayerName] = useState("Jogador");
-  
-  const [mostrarModal, setMostrarModal] = useState(true);
+  const [playerName, setPlayerName] = useState(nomeSalvo || "Jogador");
+  const [mostrarModal, setMostrarModal] = useState(!nomeSalvo);
 
   const audioRef = useRef(new Audio(temaJogo));
 
   const handleConfirmarNome = (nome) => {
     setPlayerName(nome);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(PLAYER_NAME_STORAGE_KEY, nome);
+    }
     setMostrarModal(false); // Fecha o modal
   };
 

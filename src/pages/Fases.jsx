@@ -7,46 +7,49 @@ function Fases() {
 
   return (
     <div className="container-fases">
-      {/* Botão de Voltar posicionado no canto superior esquerdo */}
       <button className="btn-voltar-topo" onClick={() => navigate("/")}>
-        ← Voltar
+        Voltar
       </button>
 
       <div className="card-fases">
         <h1>Escolha o Nível</h1>
-        
+
         <div className="botoes-fases">
-          <button 
-          className="btn-nivel facil" 
-          onClick={() =>
-          navigate("/Fogueira", {
-          state: { tempoInicial: 50 }
-          })
-          }
+          <button
+            className="btn-nivel facil"
+            onClick={() =>
+              navigate("/Fogueira", {
+                state: { tempoInicial: 50 }
+              })
+            }
           >
-              Fácil
+            <span className="nivel-titulo">Fácil</span>
+            <span className="nivel-fase">Fase São João</span>
           </button>
-          
-          <button className="btn-nivel medio"
-          onClick={() =>
-          navigate("/Cordel", {
-          state: { tempoInicial: 30 }
-          })
-          } 
+
+          <button
+            className="btn-nivel medio"
+            onClick={() =>
+              navigate("/Cordel", {
+                state: { tempoInicial: 30 }
+              })
+            }
           >
-            Médio
+            <span className="nivel-titulo">Médio</span>
+            <span className="nivel-fase">Fase Cordel</span>
           </button>
-          
+
           <button
             className="btn-nivel dificil"
             onClick={() =>
-            navigate("/caranguejo", {
-             state: { tempoInicial: 15 }
-            })
-            }     
-            >
-            Difícil
-            </button>
+              navigate("/caranguejo", {
+                state: { tempoInicial: 15 }
+              })
+            }
+          >
+            <span className="nivel-titulo">Difícil</span>
+            <span className="nivel-fase">Fase Caranguejo</span>
+          </button>
         </div>
       </div>
     </div>

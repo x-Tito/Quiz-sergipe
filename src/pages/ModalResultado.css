@@ -75,6 +75,31 @@
   color: #e74c3c;
 }
 
+.medalha-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 16px 18px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fff4d8 0%, #ffe1a2 100%);
+  border: 2px solid #d4a373;
+}
+
+.medalha-label {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-blue);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.medalha-valor {
+  font-family: 'Lilita One', cursive;
+  font-size: 1.7rem;
+  color: var(--color-orange);
+}
+
 .resultado-botoes {
   display: flex;
   flex-direction: column;
@@ -113,26 +138,65 @@
   box-shadow: 0 4px 0 var(--color-btn-shadow);
 }
 
-@media (max-width: 480px) {
-
+@media (max-width: 900px) {
   .modal-resultado {
-    padding: 30px 20px;
-
-    border-radius: 30px;
+    max-width: 430px;
+    padding: 32px 24px;
+    border-radius: 34px;
   }
 
   .modal-resultado h2 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
   }
 
   .resultado-texto {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+  }
+
+  .medalha-valor {
+    font-size: 1.45rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .modal-resultado {
+    padding: 24px 16px;
+    border-radius: 24px;
+  }
+
+  .modal-resultado h2 {
+    font-size: 1.9rem;
+  }
+
+  .resultado-texto {
+    font-size: 1rem;
   }
 
   .resultado-btn {
-    font-size: 1.1rem;
-
-    padding: 12px;
+    font-size: 1rem;
+    padding: 11px;
   }
 
+}
+
+@media (max-height: 700px) {
+  .modal-resultado {
+    padding: 22px 16px;
+    border-radius: 22px;
+  }
+
+  .modal-resultado h2 {
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+  }
+
+  .resultado-texto {
+    margin-bottom: 10px;
+  }
+
+  .resultado-botoes {
+    margin-top: 20px;
+    gap: 10px;
+  }
 }
